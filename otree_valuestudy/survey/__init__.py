@@ -322,6 +322,68 @@ class Player(BasePlayer):
             ],
             widget=widgets.RadioSelect,
         )
+    
+
+# Survey Usage.html
+
+    internet_hours = models.StringField(
+        label="<b>Wie viele Stunden verbringen Sie täglich im Internet?</b>",
+        choices=[
+            ('0-2h', '0 - 2 Stunden'),
+            ('2-4h', '2 - 4 Stunden'),
+            ('4-6h', '4 - 6 Stunden'),
+            ('6-8h', '6 - 8 Stunden'),
+            ('more-than-8h', 'Mehr als 8 Stunden'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    browser = models.StringField(
+        label="<b>Welchen Browser benutzen Sie am meisten um im Internet zu surfen?</b>",
+        choices=[
+            ('Chrome', 'Chrome'),
+            ('Microsoft Edge', 'Microsoft Edge'),
+            ('Mozilla Firefox', 'Mozilla Firefox'),
+            ('Safari', 'Safari'),
+            ('Brave', 'Brave'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    other_browser = models.StringField(
+        label="Andere Browser:",
+        blank=True,
+    )
+
+    mobile_os = models.StringField(
+        label="<b>Welches mobile Betriebssystem benutzen Sie auf Ihrem Smartphone?</b>",
+        choices=[
+            ('noSmartphone', 'Ich habe kein Smartphone'),
+            ('iOS', 'iOS'),
+            ('Android', 'Android'),
+            ('unknown', 'Weiß nicht'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    email_provider = models.StringField(
+        label="<b>Welchen E-Mail-Provider benutzen Sie?</b>",
+        choices=[
+            ('Gmail', 'Gmail'),
+            ('GMX', 'GMX'),
+            ('Outlook', 'Outlook'),
+            ('T-Online', 'T-Online'),
+            ('Web.de', 'Web.de'),
+            ('ProtonMail', 'ProtonMail'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    other_email_provider = models.StringField(
+        label="<b>Anderer Provider:</b>",
+        placeholder='Anderer Provider eingeben...',
+        blank=True,
+    )
 # FUNCTIONS
 
 
@@ -356,12 +418,18 @@ class Law2(Page):
     form_model = 'player'
     form_fields = ['question26', 'question27', 'question28', 'question29', 'question30']
 
+class Usage(Page):
+    form_model = 'player'
+    form_fields = ['internet_hours', 'browser', 'other_browser', 'mobile_os', 'email_provider', 'other_email_provider']
 
 
-page_sequence = [Demographics, 
+
+page_sequence = [ Demographics, 
                  Preferences,
                    Preferences2,
                     Knowledge,
                      Knowledge2,
                       Law,
-                       Law2 ]
+                       Law2,
+                       Usage
+                        ]

@@ -1,113 +1,57 @@
-{{ block title }} Demografische Daten {{ endblock }}
+{{ block title }} 
+
+
+
+
+
+    <div class="menu" style="background-color:#ffffff;">
+    <div class="menu-table flex-row-space-between" style="border-bottom: 1px solid black; ">
+      <div class="logo flex-row-center">
+        <img src="{% static 'img/favicon.ico' %}" style="margin-right: 20px; 
+        max-width:50px;
+        max-height:40px;"><br>
+        
+        <a href="index.html">Value Study</a>
+      </div>
+      <a class="menu-button" tabindex="0" href="javascript:void(0)">
+        <img src="{% static 'img/menu.png' %}">
+      </a>
+      <div class="menu-items flex-row-center flex-item">
+        <a class="menu-embedding" href="">Overview</a>
+        <a class="menu-widget" href="">About us</a>
+        <a class="menu-embedding" href="">Privacy</a>
+
+ 
+        
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/controls.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/frame.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{% static 'js/menu.js' %}"></script>
+  <script src="{% static 'js/footer.js' %}"></script>
+  <script src="{% static 'js/widgets.js' %}"></script>
+  <script src="{% static 'js/util.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  
+  {{ endblock }}
 {{ block content }}
 
 
 
 
-<!-------------------------------------------------------------------------------------------->
-    <!--Start Cookie Banner-->
-
-<body>
-
-  <style>
-  .cookie-banner {
-    text-align: center;
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #ccc; /* Default color is grey */
-  }
-
-  .cookie-button {
-    padding: 10px 15px;
-    margin: 0 5px;
-    color: white;
-    background-color: grey; 
-    cursor: pointer;
-    font-size: 14px;
-  }
-
-
-  .cookie-banner.design1 .accept-button {
-    background-color: #4CAF50;
-  }
-
-  .cookie-banner.design1 .decline-button {
-    background-color: #F44336;
-  }
-  
-  .cookie-banner .accept-button {
-    background-color: grey; /* Green */
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-
-  .cookie-banner .decline-button {
-    background-color: grey; /* Red */
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-
-
-  #cookieButtons button {
-    margin: 0 5px;
-  }
-
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 26px;
-  }
-
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-
-  .slider.round {
-    border-radius: 34px;
-  }
-
-  .slider.round:before {
-    border-radius: 50%;
-  }
-</style>
 <!-- Modal -->
 <dialog>
   <div class="cookie-banner" id="cookieBanner">

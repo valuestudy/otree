@@ -5,10 +5,25 @@ from os import environ
 
 SESSION_CONFIGS = [
     
+
+    dict(
+        name='WTA_abfrage', 
+        display_name="The survey about internet usage for participants",
+        app_sequence=['WTA_abfrage','cookiebanner', 'survey'], 
+        num_demo_participants=1
+    ),
+
+    dict(
+        name='cookiebanner', 
+        display_name="The cookiebanner shown to participants",
+        app_sequence=['WTA_abfrage','cookiebanner','survey'], 
+        num_demo_participants=1
+    ),
+
     dict(
         name='survey', 
         display_name="The survey about internet usage for participants",
-        app_sequence=['survey'], 
+        app_sequence=['WTA_abfrage','cookiebanner', 'survey'], 
         num_demo_participants=1
     ),
 ]
