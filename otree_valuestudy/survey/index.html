@@ -1,0 +1,419 @@
+{{ block title }} Demografische Daten {{ endblock }}
+{{ block content }}
+
+
+
+
+<!-------------------------------------------------------------------------------------------->
+    <!--Start Cookie Banner-->
+
+<body>
+
+  <style>
+  .cookie-banner {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #ccc; /* Default color is grey */
+  }
+
+  .cookie-button {
+    padding: 10px 15px;
+    margin: 0 5px;
+    color: white;
+    background-color: grey; 
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+
+  .cookie-banner.design1 .accept-button {
+    background-color: #4CAF50;
+  }
+
+  .cookie-banner.design1 .decline-button {
+    background-color: #F44336;
+  }
+  
+  .cookie-banner .accept-button {
+    background-color: grey; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .cookie-banner .decline-button {
+    background-color: grey; /* Red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+
+
+  #cookieButtons button {
+    margin: 0 5px;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 26px;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+</style>
+<!-- Modal -->
+<dialog>
+  <div class="cookie-banner" id="cookieBanner">
+    <div id="cookieContent">
+      <h2 id="bannerTitle">Cookie Einstellungen</h2>
+      <!-- Text for design1-3 with the baseline text-->
+      <p class="cookie-text">
+        Um Ihr Nutzungserlebnis zu verbessern, verwendet diese Website Cookies. Dabei werden unterschiedliche Arten von Cookies verwendet, um Ihr Erlebnis auf dieser Website zu verbessern. Dazu gehören solche Cookies, die für den Betrieb dieser Website technisch erforderlich sind. Zudem werden Cookies verwendet, die für statistische Zwecke genutzt werden, Ihren Komfort auf dieser Website erhöhen oder zur Erstellung zielgerichteter Werbeangebote genutzt werden. 
+        Weitere Informationen zu diesen Technologien können Sie unserer <a href="/privacy.html" class="grey-link" target="_blank">Datenschutzrichtlinie</a> entnehmen. 
+        
+      <br>
+      <br>
+      </p>
+
+      <!-- Text for design4 which has the reject button within the text  -->
+      <p class="cookie-text design4-cookie-text" style="display: none;">
+        Um Ihr Nutzungserlebnis zu verbessern, verwendet diese Website Cookies. Dabei werden unterschiedliche Arten von Cookies verwendet, um Ihr Erlebnis auf dieser Website zu verbessern. Dazu gehören solche Cookies, die für den Betrieb dieser Website technisch erforderlich sind. Zudem werden Cookies verwendet, die für statistische Zwecke genutzt werden, Ihren Komfort auf dieser Website erhöhen oder zur Erstellung zielgerichteter Werbeangebote genutzt werden. 
+        Sie können in den <a href="javascript:void(0);"  class="grey-link" onclick="showManageCookies()">Einstellungen</a> wählen, welche dieser Cookies verwendet werden sollen. 
+        Die Platzierung nicht essenzieller Cookies können Sie <a href="javascript:void(0);" id="decline-all-cookies-design4" class="grey-link" onclick="declineAllCookies()">ablehnen</a>.<br>
+        
+      <br>
+      </p>
+
+      <div class="cookie-buttons" id="cookieButtons">
+        <button id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren</button>
+        <button id="decline-all-cookies" class="cookie-button decline-button" onclick="declineAllCookies()">Nicht-essenzielle Cookies ablehnen</button>
+        <button id="custom-button-design2" class="cookie-button" style="display: none;" onclick="showManageCookies()">Einstellungen</button>
+
+        </div>
+        <br>
+       
+
+        <a href="javascript:void(0);" class="cookie-link" onclick="showManageCookies()">Details und Cookie Einstellungen</a>
+      
+    </div>
+
+    <div id="manageCookiesContent" style="display: none;">
+      <h2 id="manageTitle">Cookie-Einstellungen verwalten</h2> 
+      <p class="settings-text">Wählen Sie aus, welchen Arten von Cookies Sie zustimmen: <br> <br>
+      <label class="switch">
+        <input type="checkbox" id="nonNecessarySwitch" checked disabled>
+        <span class="slider round"></span>
+      </label>
+      
+      <b><label for="nonNecessarySwitch">Funktionale Cookies</label></b><br>
+      Funktionale und technisch erforderliche Cookies helfen uns dabei, diese Webseite für ihre Besucher nutzbar zu machen, indem sie Grundfunktionen wie Seitennavigation oder die Erfassung angegebener Daten ermöglichen. Sie sorgen dafür, dass während Ihres Besuches getätigte Aktionen auf dieser Website korrekt erfasst werden können. 
+        Diese Dienste sind standardmäßig aktiviert und können nicht deaktiviert werden. 
+      
+      <br> <br>
+      <label class="switch">
+        <input type="checkbox" id="AnalyticSwitch">
+        <span class="slider round"></span>
+      </label>
+      <b><label for="AnalyticSwitch">Analytische Cookies</label></b><br>
+
+      Um unsere Dienstleistungen und diese Website zu verbessern, sammeln wir Daten in anonymisierter Form für statistische Zwecke. Mit Hilfe dieser Cookies ist es uns z.B. möglich, die Frequentierung und den Einfluss bestimmter Bereiche unserer Website zu ermitteln und den Inhalt zu optimieren.
+
+        <br> <br>
+        <label class="switch">
+          <input type="checkbox" id="ComfortSwitch">
+          <span class="slider round"></span>
+        </label>
+        <b><label for="ComfortSwitch">Komfort Cookies</label></b><br>
+  
+        Diese Cookies werden verwendet, um das Nutzungserlebnis auf Ihrer Website zu verbessern. Sie ermöglichen es Ihnen beispielsweise, bei Ihrem nächsten Besuch schnell auf frühere Fortschritte zuzugreifen, und wir verwenden sie, um Ihre Wünsche bei der Nutzung besser zu erfassen.
+  
+          <br> <br>
+        <label class="switch">
+          <input type="checkbox" id="MarketingSwitch">
+          <span class="slider round"></span>
+        </label>
+        <b><label for="MarketingSwitch">Marketing Cookies</label></b><br>
+  
+        Diese Cookies werden verwendet, um Besucher auf verschiedenen Websites zu verfolgen. Ziel ist es, Anzeigen zu schalten, die für den einzelnen Nutzer relevant und ansprechend sind und damit für Verlage und dritte Werbetreibende wertvoller sind.
+
+      </p>
+
+
+
+
+      <br><!-- Button design 2-4 which has 'Back' button -->
+      
+      <!-- Button design1 which has the green accept all button -->
+      <p class="cookie-setting design1-cookie-setting" style="display: none; text-align: center;">
+        <button id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren</button>
+        <button id="zurueckButton" class="cookie-button" onclick="applyCookieSettings()">Einstellungen anwenden</button>
+      </p> 
+      </div>
+      </div>
+      </dialog>
+      
+      <script>
+      const dialogElement = document.querySelector("dialog");
+      
+      dialogElement.showModal();
+      
+      function acceptAllCookies() {
+        console.log("All cookies accepted");
+        dialogElement.close();
+      }
+      
+      function declineAllCookies() {
+        console.log("All cookies declined");
+        dialogElement.close();
+      }
+      
+      function showManageCookies() {
+        document.getElementById("cookieContent").style.display = "none";
+        document.getElementById("manageCookiesContent").style.display = "block";
+      }
+      
+      function applyCookieSettings() {
+        const analyticSwitch = document.getElementById("AnalyticSwitch");
+        const comfortSwitch = document.getElementById("ComfortSwitch");
+        const marketingSwitch = document.getElementById("MarketingSwitch");
+      
+        if (analyticSwitch.checked) {
+          console.log("Analytic cookies enabled");
+        } else {
+          console.log("Analytic cookies disabled");
+        }
+      
+        if (comfortSwitch.checked) {
+          console.log("Comfort cookies enabled");
+        } else {
+          console.log("Comfort cookies disabled");
+        }
+      
+        if (marketingSwitch.checked) {
+          console.log("Marketing cookies enabled");
+        } else {
+          console.log("Marketing cookies disabled");
+        }
+      
+        // Display content and hide manage cookies section
+        document.getElementById("cookieContent").style.display = "block";
+        document.getElementById("manageCookiesContent").style.display = "none";
+      
+        dialogElement.close();
+      }
+      
+      // For the Zurück button on the second layer
+      function showCookieContent() {
+        document.getElementById("cookieContent").style.display = "block";
+        document.getElementById("manageCookiesContent").style.display = "none";
+      }
+      
+      document.getElementById("zurueckButton").addEventListener("click", showCookieContent);
+      
+      function setRandomDesign() {
+        const designs = ["design1", "design2", "design3", "design4"];
+        const randomDesign = designs[Math.floor(Math.random() * designs.length)];
+      
+        const cookieBanner = document.getElementById("cookieBanner");
+      
+        // Remove all design classes
+        cookieBanner.classList.remove(...designs);
+      
+        // Add class for the randomly selected design
+        cookieBanner.classList.add(randomDesign);
+      
+        // Hide all cookie text elements
+        const cookieTexts = document.querySelectorAll(".cookie-text");
+        cookieTexts.forEach(text => text.style.display = "none");
+      
+        // Hide all cookie setting elements
+        const cookieSettings = document.querySelectorAll(".cookie-setting");
+        cookieSettings.forEach(setting => setting.style.display = "none");
+      
+        // Show text element for design4 if selected
+        if (randomDesign === "design4") {
+          const design4Text = document.querySelector(".design4-cookie-text");
+          design4Text.style.display = "block";
+          // Hide the .cookie-text for design4
+          const baselineText = document.querySelector(".cookie-text");
+          baselineText.style.display = "none";
+          // Hide the decline-all-cookies button for design4
+          document.getElementById("decline-all-cookies").style.display = "none";
+        } else {
+          // Show the .cookie-text for designs 1-3
+          const baselineText = document.querySelector(".cookie-text");
+          baselineText.style.display = "block";
+          // Show/hide the decline-all-cookies button for designs 1-3
+          if (randomDesign === "design2") {
+            document.getElementById("decline-all-cookies").style.display = "none";
+          } else {
+            document.getElementById("decline-all-cookies").style.display = "inline-block";
+          }
+        }
+      
+        // Show/hide the cookie settings section based on the selected design
+        if (randomDesign === "design1") {
+          document.querySelector(".design1-cookie-setting").style.display = "block";
+        } else {
+          document.querySelector(".design1-cookie-setting").style.display = "none";
+        }
+      
+        // Show the cookie-setting section for designs 2-4
+        if (randomDesign !== "design1") {
+          document.querySelector(".cookie-setting").style.display = "block";
+        }
+
+        if (randomDesign === "design2" || randomDesign === "design4") {
+          const cookieLinks = document.querySelectorAll(".cookie-link");
+          cookieLinks.forEach(link => link.style.display = "none");
+        }
+        
+        if (randomDesign === "design2") {
+              document.getElementById("custom-button-design2").style.display = "block";
+            } else {
+              document.getElementById("custom-button-design2").style.display = "none";
+            }
+      }
+      
+      // Call the function to set a random design of the cookie banner
+      setRandomDesign();
+      </script>
+      
+      
+      
+
+
+<!--End Cookie Banner-->
+    <!-------------------------------------------------------------------------------------------->
+
+
+
+<head>
+  <title>Value Study</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/controls.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/frame.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">
+
+
+
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  
+  <script src="{% static 'js/menu.js' %}"></script>
+  <script src="{% static 'js/footer.js' %}"></script>
+  <script src="{% static 'js/widgets.js' %}"></script>
+  <script src="{% static 'js/util.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+
+
+
+</head>
+
+<body>
+  <div class="menu-container"></div>
+  <div class="content-container">
+    <!-------------------------------------------------------------------------------------------->
+    <!--Start Header-->
+    <div class="banner" style="background: url('{% static 'img/example-scene.svg' %}') no-repeat center; background-size: contain; height: 300px;"></div>
+    <div class="banner" style="color: black;  background-color: rgb(255, 225, 0); max-width: 900px; margin: 0 auto;">
+      <div class="banner-table flex-column">
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+          <h2 class="add-top-margin-small">Vielen Dank für Ihre Teilnahme an unserer Studie!</h2>
+          <br>
+          <p class="text">
+            Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
+            augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
+            condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit
+            vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae
+            sapien ut libero venenatis faucibus. Nullam quis ante.
+          
+          
+            </p>
+          
+          
+
+            
+          </div>
+        </div>
+      <a href="consent.html" class="small-button">Studie beginnen</a>
+
+      {{ next_button }}
+      </div>
+    </div>
+  </div>
+
+
+    <!--End Header-->
+    <!-------------------------------------------------------------------------------------------->
+
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+
+
+
+{{ endblock }}

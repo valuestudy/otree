@@ -1,0 +1,340 @@
+/*************************************************************************
+ * Your custom CSS file
+ *************************************************************************/
+
+.custom-dropdown {
+  width: 240px;
+}
+
+.custom-textbox {
+  width: 240px;
+}
+
+#dialog-1,
+#dialog-2,
+#dialog-3,
+#dialog-4,
+#share-dialog {
+  display: none;
+}
+
+#share-url {
+  width: 100%;
+  -webkit-touch-callout: default !important;
+  -webkit-user-select: text !important;
+  -khtml-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+#share-url-copy-prompt {
+  display: none;
+  color: #007bff;
+}
+
+
+
+/* otree specific */
+
+.otree-body {
+
+  background-color:rgb(255, 255, 255) ;
+}
+
+.menu-container {
+z-index: 2;
+position: relative;
+width: 100%;
+background-color: #333333;
+min-width: 300px;
+}
+
+.menu-widget {
+color: #333333 !important;
+opacity: 1 !important;
+font-weight: 700 !important;
+}
+
+.menu-index {
+color: #333333 !important;
+opacity: 1 !important;
+font-weight: 700 !important;
+}
+
+.menu-embedding {
+  color: #333333 !important;
+  opacity: 1 !important;
+  font-weight: 700 !important;
+  }
+
+
+/* ################################################ */
+/* Cookie Banner overlay */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.dialog-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+dialog {
+  z-index: 10;
+  background: transparent;
+  border: none;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cookie-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #333;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  max-width: 400px; /* Set the maximum width */
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.cookie-buttons {
+  display: flex;
+  justify-content: space-between; /* Distribute space evenly between buttons */
+  width: 100%; /* Make sure buttons take up full width */
+}
+
+.cookie-button {
+  flex: 1; /* Equal width for both buttons */
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.accept-button {
+  background-color: #0c7518;
+  color: #fff;
+}
+
+.decline-button {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+.grey-design .cookie-button {
+  background-color: grey;
+  color: white;
+}
+
+
+.cookie-text {
+  text-align: justify; /* Sets the text alignment to justified */
+  margin: 10px 0;
+  font-size: 14px; /* Adjust the font size to your preference */
+}
+.settings-text {
+  text-align: justify; /* Sets the text alignment to justified */
+  margin: 10px 0;
+  font-size: 13px; /* Adjust the font size to your preference */
+}
+
+.cookie-link {
+  color: #3e3e3e;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.grey-link {
+  color: #3e3e3e;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+/* ##############Slider for WTA ################################## */
+/* Style for the slider container */
+
+.slider-container {
+  width: 160%; /* Adjust the width as needed */
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+/* Style for the slider input */
+input[type="range"] {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  text-align: justify;
+}
+
+/* Style for the slider labels */
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 130%;
+  top: 30px; /* Adjust the top position as needed */
+}
+
+/* Style for the range slider */
+input[type="range"] {
+  width: 100%;
+}
+
+/* Style for the slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  cursor: pointer;
+}
+
+/* Style for the slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+/* Style for the slider fill (up to the thumb) */
+input[type="range"]::-webkit-slider-thumb {
+  background: #dbac34;
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-top: -7.5px; /* Adjusted to center the thumb */
+}
+
+
+
+
+/* ################################################ */
+
+.menu-index {
+  color: rgb(255, 255, 255) !important;
+  opacity: 1 !important;
+  font-weight: 700 !important;
+}
+/* Define the button style */
+.button {
+  display: inline-block;
+  padding: 15px; /* Adjust padding for the height of the button */
+  background-color: #444; /* Slightly lighter grey background color */
+  color: white; /* White text color */
+  text-decoration: none;
+  border: none;
+  border-radius: 8px; /* Optional: rounded corners */
+  font-size: 18px; /* Increase font size for larger text */
+  transition: background-color 0.3s; /* Add a smooth transition for the background color change */
+  font-family: 'PT-serif', sans-serif; /* Replace with your preferred font */
+}
+
+/* Change the background color on hover */
+.button:hover {
+  background-color: #666; /* Even lighter grey on hover */
+}
+
+.small-button {
+  display: inline;
+  padding: 10px 20px;
+  background-color: #6a6b6d;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
