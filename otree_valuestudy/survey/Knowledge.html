@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Value Study</title>
+  
+    <!-- Add Firebase SDK Scripts with defer attribute -->
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database-compat.js" defer></script>
+  
+    <!-- Firebase Configuration Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const firebaseConfig = {
+          apiKey: "AIzaSyDF1e_FBAv4P1krAwTKVyP3F5g4knp4Hew",
+          authDomain: "valuestudy.firebaseapp.com",
+          databaseURL: "https://valuestudy-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "valuestudy",
+          storageBucket: "valuestudy.appspot.com",
+          messagingSenderId: "1092513324979",
+          appId: "1:1092513324979:web:b6823acdd1d63aca5935c6"
+        };
+  
+        // Initialize Firebase after the DOM has been fully loaded
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+  
+        // Get a reference to the database
+        const database = firebaseApp.database();
+        const surveyRef = database.ref('surveyResponses');
+  
+        // Function to send survey responses to Firebase
+        function sendSurveyResponse(data) {
+          surveyRef.push(data)
+            .then(() => {
+              console.log('Survey response sent to Firebase successfully!');
+              // Optionally, reset the form or perform other actions, e.g. redirect to survey_knowledge2.html
+              window.location.href = 'survey_knowledge2.html';
+            })
+            .catch(error => {
+              console.error('Error sending survey response to Firebase:', error);
+            });
+        }
+  
+        // Function to handle form submission
+        function handleFormSubmission(event) {
+          event.preventDefault();
+  
+          // Get form data
+          const surveyForm = document.getElementById('surveyForm');
+          const formData = new FormData(surveyForm);
+          const data = {};
+          formData.forEach((value, key) => {
+            data[key] = value;
+          });
+  
+          // Call the function to send survey response to Firebase
+          sendSurveyResponse(data);
+        }
+  
+        // Continue with your code...
+        const surveyForm = document.getElementById('surveyForm');
+  
+        surveyForm.addEventListener('submit', handleFormSubmission);
+      });
+    </script>
+  </head>
+  
+
+  <title> Value Study </title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/custom.js"></script>
+
+
+
+  <style>
+    .menu-widget {
+      color: rgb(255, 255, 255) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #9e9e9e;
+    }
+            
+    /* Alternate row background color */
+    tr:nth-of-type(even) {
+    background-color: #f2f2f2; /* Alternate background color */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu-container"></div>
+  <div class="content-container">
+    <div class="content">
+      <div class="content-table flex-column">
+        <div class="flex-row">
+            <div class="flex-item flex-column-survey">
+                <h2 id="Survey">Wissen über institutionelle Praktiken</h2>
+                <hr>
+                <p class="text">
+                Bitte beantworten Sie folgende Fragen zum Kentnissstand zum Thema online Privatsphäre.
+                <br>
+                </p>
+                <br>
+            <form id="likertForm">
+                <div class="custom-radio-group-survey add-top-margin">
+                <table>
+                    <tr>
+                      <th>Fragen</th>
+                        <th>Wahr</th>
+                        <th>Falsch</th>
+                        <th>Weiß nicht</th>
+                    </tr>
+                    <tr>
+                        <td>Die National Security Agency (NSA) greift nur auf Nutzerdaten zu, die öffentlich und für jederman zugänglich sind.</td>
+                        <td><input type="radio" name="question-1" value="Wahr"></td>
+                        <td><input type="radio" name="question-1" value="Falsch"></td>
+                        <td><input type="radio" name="question-1" value="Weiß nicht"></td>
+                    </tr>
+                    <tr>
+                        <td>Betreiber sozialer Netzwerke (z.B. Facebook) sammeln und verarbeiten auch Informationen von Personen, die dieses Netzwerk gar nicht nutzen.</td>
+                        <td><input type="radio" name="question-2" value="Wahr"></td>
+                        <td><input type="radio" name="question-2" value="Falsch"></td>
+                        <td><input type="radio" name="question-2" value="Weiß nicht"></td>
+                    </tr>
+                    <tr>
+                        <td>Daten, die Betreiber sozialer Netzwerke (z.B. Facebook) über die Nutzer sammlen, werden nach 5 Jahren gelöscht.</td>
+                        <td><input type="radio" name="question-3" value="Wahr"></td>
+                        <td><input type="radio" name="question-3" value="Falsch"></td>
+                        <td><input type="radio" name="question-3" value="Weiß nicht"></td>
+                    </tr>
+                    <tr>
+                        <td>Unternehmen kombinieren Daten, die auf verschiedenen Websites im Internet hinterlassen werden und stellen daraus Nutzerprofile zusammen.</td>
+                        <td><input type="radio" name="question-4" value="Wahr"></td>
+                        <td><input type="radio" name="question-4" value="Falsch"></td>
+                        <td><input type="radio" name="question-4" value="Weiß nicht"></td>
+                    </tr>
+                    <tr>
+                        <td>E-Mails werden häufig über mehrere Rechner weitergeleitet, bevor sie bei ihrem eigentlichen Empfänger ankommen.</td>
+                        <td><input type="radio" name="question-5" value="Wahr"></td>
+                        <td><input type="radio" name="question-5" value="Falsch"></td>
+                        <td><input type="radio" name="question-5" value="Weiß nicht"></td>
+                    </tr>
+             
+                </table>
+      
+              </div>
+            <button type="button" onclick="validateAndSubmit()">Weiter</button>
+            </div></form>
+          
+              
+
+            
+            <script>
+                function validateAndSubmit() {
+            // Get all radio groups
+            const radioGroups = document.querySelectorAll('.custom-radio-group-survey');
+      
+            // Check if all radio groups have a selected option
+            const isValid = Array.from(radioGroups).every(group => {
+              const selectedOption = group.querySelector('input[type="radio"]:checked');
+              return selectedOption !== null;
+            });
+      
+            // If all questions are answered, submit the form
+            if (isValid) {
+              handleFormSubmission();
+            } else {
+              alert('Bitte beantworten Sie alle Fragen.');
+            }
+            }
+        
+            // Rest of your existing JavaScript code...
+        
+            // Function to handle form submission
+            function handleFormSubmission() {
+                window.location.href = 'survey_knowledge2.html';
+            }
+            </script>
+
+
+      </div>
+    </div>
+    <div class="footer-container"></div>
+  </div>
+</body>
+
+</html>
