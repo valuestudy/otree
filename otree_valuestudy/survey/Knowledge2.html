@@ -1,126 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+
+{{ block title }} 
 
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Value Study</title>
-  
-    <!-- Add Firebase SDK Scripts with defer attribute -->
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database-compat.js" defer></script>
-  
-    <!-- Firebase Configuration Script -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const firebaseConfig = {
-          apiKey: "AIzaSyDF1e_FBAv4P1krAwTKVyP3F5g4knp4Hew",
-          authDomain: "valuestudy.firebaseapp.com",
-          databaseURL: "https://valuestudy-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "valuestudy",
-          storageBucket: "valuestudy.appspot.com",
-          messagingSenderId: "1092513324979",
-          appId: "1:1092513324979:web:b6823acdd1d63aca5935c6"
-        };
-  
-        // Initialize Firebase after the DOM has been fully loaded
-        const firebaseApp = firebase.initializeApp(firebaseConfig);
-  
-        // Get a reference to the database
-        const database = firebaseApp.database();
-        const surveyRef = database.ref('surveyResponses');
-  
-        // Function to send survey responses to Firebase
-        function sendSurveyResponse(data) {
-          surveyRef.push(data)
-            .then(() => {
-              console.log('Survey response sent to Firebase successfully!');
-              // Optionally, reset the form or perform other actions, e.g. redirect to survey_law.html
-              window.location.href = 'survey_law.html';
-            })
-            .catch(error => {
-              console.error('Error sending survey response to Firebase:', error);
-            });
-        }
-  
-        // Function to handle form submission
-        function handleFormSubmission(event) {
-          event.preventDefault();
-  
-          // Get form data
-          const surveyForm = document.getElementById('surveyForm');
-          const formData = new FormData(surveyForm);
-          const data = {};
-          formData.forEach((value, key) => {
-            data[key] = value;
-          });
-  
-          // Call the function to send survey response to Firebase
-          sendSurveyResponse(data);
-        }
-  
-        // Continue with your code...
-        const surveyForm = document.getElementById('surveyForm');
-  
-        surveyForm.addEventListener('submit', handleFormSubmission);
-      });
-    </script>
-  </head>
-  
 
-  <title> Value Study </title>
+
+
+    <div class="menu" style="background-color:#ffffff;">
+    <div class="menu-table flex-row-space-between" style="border-bottom: 1px solid black; ">
+      <div class="logo flex-row-center">
+        <img src="{% static 'img/favicon.ico' %}" style="margin-right: 20px; 
+        max-width:50px;
+        max-height:40px;"><br>
+        
+        <a href="index.html">Value Study</a>
+      </div>
+      <a class="menu-button" tabindex="0" href="javascript:void(0)">
+        <img src="{% static 'img/menu.png' %}">
+      </a>
+      <div class="menu-items flex-row-center flex-item">
+        <a class="menu-embedding" href="">Overview</a>
+        <a class="menu-widget" href="">About us</a>
+        <a class="menu-embedding" href="">Privacy</a>
+
+ 
+        
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/controls.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/frame.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/footer.js"></script>
-  <script src="js/widgets.js"></script>
-  <script src="js/util.js"></script>
-  <script src="js/custom.js"></script>
+  <script src="{% static 'js/menu.js' %}"></script>
+  <script src="{% static 'js/footer.js' %}"></script>
+  <script src="{% static 'js/widgets.js' %}"></script>
+  <script src="{% static 'js/util.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  
+  {{ endblock }}
+{{ block content }}
 
-
-
-  <style>
-    .menu-widget {
-      color: rgb(255, 255, 255) !important;
-      opacity: 1 !important;
-      font-weight: 700 !important;
-    }
-    
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-    th {
-        background-color: #9e9e9e;
-    }
-            
-    /* Alternate row background color */
-    tr:nth-of-type(even) {
-    background-color: #f2f2f2; /* Alternate background color */
-    }
-  </style>
-</head>
-
-<body>
-  <div class="menu-container"></div>
-  <div class="content-container">
     <div class="content">
       <div class="content-table flex-column">
         <div class="flex-row">
@@ -131,98 +60,43 @@
                 Bitte beantworten Sie folgende Fragen zum Kentnissstand zum Thema online Privatsphäre.
                 <br>
                 </p>
-                <br>
-            <form id="likertForm">
-                <div class="custom-radio-group-survey add-top-margin">
                 
+                
+                <div class="custom-survey add-top-margin add-bottom-margin">
+                  
+                    {% formfield 'question16' %}
 
-                    <div class="custom-survey add-top-margin add-bottom-margin">
-                        <span class="text"><b>1. Was verbirgt sich hinter dem Begriff "Browserverlauf"?</b> <br>Im Browserverlauf werden...</span>
-                        <div class="custom-radio-group-survey add-top-margin">
-                            <div><input type="radio" name="browser" value="A" id="browser-item-1"> <label class="break-long-url" for="browser-item-1">... die Adressen besuchter Websites gespeichert.</label></div>
-                            <div><input type="radio" name="browser" value="B" id="browser-item-2"> <label class="break-long-url" for="browser-item-2">...Cookies von besuchten Websites abgelegt.</label></div>
-                            <div><input type="radio" name="browser" value="C" id="browser-item-3"> <label class="break-long-url" for="browser-item-3">...potenziell infizierte Websites separat abgelegt.</label></div>
-                            <div><input type="radio" name="browser" value="D" id="browser-item-4"> <label class="break-long-url" for="browser-item-4">...je nach Browsertyp unterschiedliche Informationen über den Nutzer gespeichert.</label></div>
-                        </div></div>
-                        
-                        <div class="custom-survey add-top-margin add-bottom-margin">
-                            <span class="text"><b>2. Was ist ein Cookie?</b> <br></span>
-                            <div class="custom-radio-group-survey add-top-margin">
-                                <div><input type="radio" name="cookie" value="A" id="cookie-item-1"> <label class="break-long-url" for="cookie-item-1">Eine Text-Datei, die es Websites ermöglicht, den Nutzer beim erneuten Besuch wiederzuerekennen</label></div>
-                                <div><input type="radio" name="cookie" value="B" id="cookie-item-2"> <label class="break-long-url" for="cookie-item-2">Ein Programm, mit dem man die Datenspeicherung von Webanbietern unterbinden kann.</label></div>
-                                <div><input type="radio" name="cookie" value="C" id="cookie-item-3"> <label class="break-long-url" for="cookie-item-3">Ein Computer-Virus, das man sich beim Besuch einer Website einfangen kann.</label></div>
-                                <div><input type="radio" name="cookie" value="D" id="cookie-item-4"> <label class="break-long-url" for="cookie-item-4">Ein Browser Plugin, das sicheres Surfen gewährleistet.</label></div>
-                            </div>
-                        </div>
-                        <div class="custom-survey add-top-margin add-bottom-margin">
-                            <span class="text"><b>3. Was versteht man unter dem Begriff "Cache"?</b> <br></span>
-                            <div class="custom-radio-group-survey add-top-margin">
-                                <div><input type="radio" name="cache" value="A" id="cache-item-1"> <label class="break-long-url" for="cache-item-1">Ein Browser-Plug-In, welches den Datentransfer beim Surfen verschlüsselt.</label></div>
-                                <div><input type="radio" name="cache" value="B" id="cache-item-2"> <label class="break-long-url" for="cache-item-2">Ein Programm, welches Daten auf eine externe Festplatte kopiert, um diese vor Datenklau zu schützen.</label></div>
-                                <div><input type="radio" name="cache" value="C" id="cache-item-3"> <label class="break-long-url" for="cache-item-3">Ein Programm, welches Daten über den Internetnutzer gezielt ausspioniert und dann Dritte weiterleitet.</label></div>
-                                <div><input type="radio" name="cache" value="D" id="cache-item-4"> <label class="break-long-url" for="cache-item-4">Einen Puffer-Speicher, der das Surfen im Internet beschleunigt.</label></div>
-                            </div>
-                        </div>
-                        
-                        <div class="custom-survey add-top-margin add-bottom-margin">
-                            <span class="text"><b>4. Was versteht man unter einem "Trojaner"?</b> <br> Ein Trojaner ist ein Computerprogramm, das...<br></span>
-                            <div class="custom-radio-group-survey add-top-margin">
-                                <div><input type="radio" name="trojaner" value="A" id="trojaner-item-1"> <label class="break-long-url" for="trojaner-item-1">...den Rechner vor Viren und anderen Schadprogrammen schützt.</label></div>
-                                <div><input type="radio" name="trojaner" value="B" id="trojaner-item-2"> <label class="break-long-url" for="trojaner-item-2">...als nützliche Anwendung getarnt ist, im Hintergrund aber eine andere Funktion erfüllt.</label></div>
-                                <div><input type="radio" name="trojaner" value="C" id="trojaner-item-3"> <label class="break-long-url" for="trojaner-item-3">...nur zum Spaß entwickelt wurde und keine spezifische Funktion hat.</label></div>
-                                <div><input type="radio" name="trojaner" value="D" id="trojaner-item-4"> <label class="break-long-url" for="trojaner-item-4">...als Computervirus in den 90ern Schaden anrichtete, heute aber nicht mehr existiert.</label></div>
-                            </div>
-                        </div>
-                        
-                        <div class="custom-survey add-top-margin add-bottom-margin">
-                            <span class="text"><b>5. Was ist eine "Firewall"?</b> <br></span>
-                            <div class="custom-radio-group-survey add-top-margin">
-                                <div><input type="radio" name="firewall" value="A" id="firewall-item-1"> <label class="break-long-url" for="firewall-item-1">Eine neue technische Entwicklung, die verhindert, dass Daten bei einem Kurzschluss verloren gehen.</label></div>
-                                <div><input type="radio" name="firewall" value="B" id="firewall-item-2"> <label class="break-long-url" for="firewall-item-2">Ein Browser-Plugin, das sicheres Surfen ermöglicht.</label></div>
-                                <div><input type="radio" name="firewall" value="C" id="firewall-item-3"> <label class="break-long-url" for="firewall-item-3">Ein veraltetes Schutzprogramm gegen Computer-Viren.</label></div>
-                                <div><input type="radio" name="firewall" value="D" id="firewall-item-4"> <label class="break-long-url" for="firewall-item-4">Ein Sicherungssystem, das den Computer vor unerwünschten Netzangriffen schützen soll.</label></div>
-                            </div>
-                        </div>
-                        
+                  </div>
+
+                  <div class="custom-survey add-top-margin add-bottom-margin">
+
+                    {% formfield 'question17' %}
+
+                  </div>
+
+                  <div class="custom-survey add-top-margin add-bottom-margin">
+
+                    {% formfield 'question18' %}
+
+                  </div>
+
+                  <div class="custom-survey add-top-margin add-bottom-margin">
+
+                    {% formfield 'question19' %}
+
+                  </div>
+
+                  <div class="custom-survey add-top-margin add-bottom-margin">
+
+                    {% formfield 'question20' %}
+
+                  </div>
               </div>
-            <button type="button" onclick="validateAndSubmit()">Weiter</button>
-            </div></form>
-          
+              </div>
+
+
               
 
-            
-            <script>
-                function validateAndSubmit() {
-            // Get all radio groups
-            const radioGroups = document.querySelectorAll('.custom-radio-group-survey');
-      
-            // Check if all radio groups have a selected option
-            const isValid = Array.from(radioGroups).every(group => {
-              const selectedOption = group.querySelector('input[type="radio"]:checked');
-              return selectedOption !== null;
-            });
-      
-            // If all questions are answered, submit the form
-            if (isValid) {
-              handleFormSubmission();
-            } else {
-              alert('Bitte beantworten Sie alle Fragen.');
-            }
-            }
-        
-            // Rest of your existing JavaScript code...
-        
-            // Function to handle form submission
-            function handleFormSubmission() {
-                window.location.href = 'survey_law.html';
-            }
-            </script>
+{{ next_button }}
 
-
-      </div>
-    </div>
-    <div class="footer-container"></div>
-  </div>
-</body>
-
-</html>
+{{ endblock }}

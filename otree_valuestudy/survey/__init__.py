@@ -161,6 +161,63 @@ class Player(BasePlayer):
             widget=widgets.RadioSelectHorizontal,
         )
 
+# SURVEY Knowledge2.html
+
+    question16 = models.StringField(
+            label="1. Was verbirgt sich hinter dem Begriff 'Browserverlauf'?",
+            choices=[
+                ['A', '... die Adressen besuchter Websites gespeichert.'],
+                ['B', '... Cookies von besuchten Websites abgelegt.'],
+                ['C', '... potenziell infizierte Websites separat abgelegt.'],
+                ['D', '... je nach Browsertyp unterschiedliche Informationen über den Nutzer gespeichert.']
+            ],
+            widget=widgets.RadioSelect,
+        )
+
+    question17 = models.StringField(
+            label="2. Was ist ein Cookie?",
+            choices=[
+                ['A', 'Eine Text-Datei, die es Websites ermöglicht, den Nutzer beim erneuten Besuch wiederzuerekennen'],
+                ['B', 'Ein Programm, mit dem man die Datenspeicherung von Webanbietern unterbinden kann.'],
+                ['C', 'Ein Computer-Virus, das man sich beim Besuch einer Website einfangen kann.'],
+                ['D', 'Ein Browser Plugin, das sicheres Surfen gewährleistet.']
+            ],
+            widget=widgets.RadioSelect,
+        )
+    
+    question18 = models.StringField(
+            label="3. Was versteht man unter dem Begriff 'Cache'?",
+            choices=[
+                ['A', 'Ein Browser-Plug-In, welches den Datentransfer beim Surfen verschlüsselt.'],
+                ['B', 'Ein Programm, welches Daten auf eine externe Festplatte kopiert, um diese vor Datenklau zu schützen.'],
+                ['C', 'Ein Programm, welches Daten über den Internetnutzer gezielt ausspioniert und dann Dritte weiterleitet.'],
+                ['D', 'Einen Puffer-Speicher, der das Surfen im Internet beschleunigt.']
+            ],
+            widget=widgets.RadioSelect,
+        )
+    
+    question19 = models.StringField(
+            label="4. Was versteht man unter einem 'Trojaner'?",
+            choices=[
+                ['A', '... den Rechner vor Viren und anderen Schadprogrammen schützt.'],
+                ['B', '... als nützliche Anwendung getarnt ist, im Hintergrund aber eine andere Funktion erfüllt.'],
+                ['C', '... nur zum Spaß entwickelt wurde und keine spezifische Funktion hat.'],
+                ['D', '... als Computervirus in den 90ern Schaden anrichtete, heute aber nicht mehr existiert.']
+            ],
+            widget=widgets.RadioSelect,
+        )
+    
+    question20 = models.StringField(
+        label="5. Was ist eine 'Firewall'?",
+        choices=[
+            ['A', 'Eine neue technische Entwicklung, die verhindert, dass Daten bei einem Kurzschluss verloren gehen.'],
+            ['B', 'Ein Browser-Plugin, das sicheres Surfen ermöglicht.'],
+            ['C', 'Ein veraltetes Schutzprogramm gegen Computer-Viren.'],
+            ['D', 'Ein Sicherungssystem, das den Computer vor unerwünschten Netzangriffen schützen soll.']
+        ],
+        widget=widgets.RadioSelect,
+    )
+
 # FUNCTIONS
 
 
