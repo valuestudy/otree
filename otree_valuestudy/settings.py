@@ -1,13 +1,15 @@
 from os import environ
 
+
+
+
 SESSION_CONFIGS = [
-    # dict(
-    #     name='public_goods',
-    #     app_sequence=['public_goods'],
-    #     num_demo_participants=3,
-    # ),
+    
     dict(
-        name='survey', app_sequence=['survey'], num_demo_participants=1
+        name='survey', 
+        display_name="The survey about internet usage for participants",
+        app_sequence=['survey'], 
+        num_demo_participants=1
     ),
 ]
 

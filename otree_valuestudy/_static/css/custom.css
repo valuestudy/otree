@@ -33,7 +33,32 @@
   color: #007bff;
 }
 
+/* for likert scale tables */
 
+.menu-widget {
+  color: rgb(255, 255, 255) !important;
+  opacity: 1 !important;
+  font-weight: 700 !important;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+  background-color: #9e9e9e;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+tr:nth-of-type(even) {
+background-color: #f2f2f2; /* Alternate background color */
+}
 
 /* otree specific */
 

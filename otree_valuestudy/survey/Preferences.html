@@ -1,0 +1,99 @@
+
+{{ block title }} 
+
+
+
+
+
+    <div class="menu" style="background-color:#ffffff;">
+    <div class="menu-table flex-row-space-between" style="border-bottom: 1px solid black; ">
+      <div class="logo flex-row-center">
+        <img src="{% static 'img/favicon.ico' %}" style="margin-right: 20px; 
+        max-width:50px;
+        max-height:40px;"><br>
+        
+        <a href="index.html">Value Study</a>
+      </div>
+      <a class="menu-button" tabindex="0" href="javascript:void(0)">
+        <img src="{% static 'img/menu.png' %}">
+      </a>
+      <div class="menu-items flex-row-center flex-item">
+        <a class="menu-embedding" href="">Overview</a>
+        <a class="menu-widget" href="">About us</a>
+        <a class="menu-embedding" href="">Privacy</a>
+
+ 
+        
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/controls.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/frame.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{% static 'js/menu.js' %}"></script>
+  <script src="{% static 'js/footer.js' %}"></script>
+  <script src="{% static 'js/widgets.js' %}"></script>
+  <script src="{% static 'js/util.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  
+  {{ endblock }}
+{{ block content }}
+
+    <div class="content">
+      <div class="content-table flex-column">
+        <div class="flex-row">
+            <div class="flex-item flex-column-survey">
+                <h2 id="Survey">Datenschutz-Präferenzen</h2><hr>
+                <p class="text">
+                  Bitte beantworten Sie folgende Fragen zu Ihren Ansichten hinsichtlich Ihrer online Privatsphäre. 
+                  <br></p>
+               <br>
+
+                <div class="custom-radio-group-survey add-top-margin"></div><table class="table"><tr>
+                  <th>Fragen</th>
+                  <th>Stimme voll zu</th>
+                  <th>Stimme eher zu</th>
+                  <th>Neutral</th>
+                  <th>Stimme eher nicht zu</th>
+                  <th>Stimme gar nicht zu</th>
+              </tr>
+              
+                  {{ for field in form }}
+                      <tr>
+                          <td>{{ field.label }}</td>
+                          {{ for choice in field }}
+                              <td>{{ choice }}</td>
+                          {{ endfor }}
+                      </tr>
+                  {{ endfor }}
+
+
+
+
+              </table></div>
+
+                
+                
+
+                
+
+
+    </div>
+
+</html>
+
+
+{{ next_button }}
+
+{{ endblock }}
