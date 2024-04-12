@@ -24,6 +24,14 @@ LIKERT_CHOICES = [
         [5, 'Stimme voll zu'],
     ]
 
+KNOWLEDGE_CHOICES = [
+
+            ['Wahr', 'Wahr'],
+            ['Falsch', 'Falsch'],
+            ['Weiß nicht', 'Weiß nicht'],
+        ]
+    
+
 
 class Player(BasePlayer):
 
@@ -120,6 +128,38 @@ class Player(BasePlayer):
             choices=LIKERT_CHOICES,
             widget=widgets.RadioSelectHorizontal,
         )
+    
+# SURVEY Knowledge.html
+
+    question11 = models.StringField(
+            label="Die National Security Agency (NSA) greift nur auf Nutzerdaten zu, die öffentlich und für jedermann zugänglich sind.",
+            choices=KNOWLEDGE_CHOICES,
+            widget=widgets.RadioSelectHorizontal,
+        )
+    
+    question12 = models.StringField(
+            label="Betreiber sozialer Netzwerke (z.B. Facebook) sammeln und verarbeiten auch Informationen von Personen, die dieses Netzwerk gar nicht nutzen.",
+            choices=KNOWLEDGE_CHOICES,
+            widget=widgets.RadioSelectHorizontal,
+        )
+    
+    question13 = models.StringField(
+            label="Daten, die Betreiber sozialer Netzwerke (z.B. Facebook) über die Nutzer sammlen, werden nach 5 Jahren gelöscht.",
+            choices=KNOWLEDGE_CHOICES,
+            widget=widgets.RadioSelectHorizontal,
+        )
+    
+    question14 = models.StringField(
+            label="Unternehmen kombinieren Daten, die auf verschiedenen Websites im Internet hinterlassen werden und stellen daraus Nutzerprofile zusammen.",
+            choices=KNOWLEDGE_CHOICES,
+            widget=widgets.RadioSelectHorizontal,
+        )
+    
+    question15 = models.StringField(
+            label="E-Mails werden häufig über mehrere Rechner weitergeleitet, bevor sie bei ihrem eigentlichen Empfänger ankommen.",
+            choices=KNOWLEDGE_CHOICES,
+            widget=widgets.RadioSelectHorizontal,
+        )
 
 # FUNCTIONS
 
@@ -138,5 +178,17 @@ class Preferences2(Page):
     form_model = 'player'
     form_fields = ['question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10']
 
+class Knowledge(Page):
+    form_model = 'player'
+    form_fields = ['question11', 'question12', 'question13', 'question14', 'question15']
 
-page_sequence = [Demographics, Preferences, Preferences2 ]
+class Knowledge2(Page):
+    form_model = 'player'
+    form_fields = ['question16', 'question17', 'question18', 'question19', 'question20']
+
+
+page_sequence = [Demographics, 
+                 Preferences,
+                   Preferences2,
+                    Knowledge,
+                     Knowledge2 ]
