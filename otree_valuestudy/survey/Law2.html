@@ -1,3 +1,4 @@
+
 {{ block title }} 
 
 
@@ -48,65 +49,44 @@
   
   {{ endblock }}
 {{ block content }}
-
-
-
-
-
-<div class="content">
-    <div class="content-table flex-column">
+ 
+    <div class="content">
+      <div class="content-table flex-column">
         <div class="flex-row">
-      
-  <div class="flex-row">
             <div class="flex-item flex-column-survey">
-              <h2 id="Survey">Demografische Daten</h2>
-              <hr>
+                <h2 id="Survey">Wissen über institutionelle Praktiken</h2>
+                <hr>
+                <p class="text">
+                Bitte beantworten Sie folgende Fragen zum Kentnissstand zum Thema online Privatsphäre.
+                <br>
+                </p>
+                <br>
+                <div class="custom-radio-group-survey add-top-margin"></div><table class="table"><tr>
+                  <th>Fragen</th>
+                  
+                  
+                  <th>Wahr</th>
+                  <th>Falsch</th>
+                  <th>Weiß nicht</th>
+
+              </tr>
+              
+              {{ for field in form }}
+                      <tr>
+                          <td>{{ field.label }}</td>
+                          {{ for choice in field }}
+                              <td>{{ choice }}</td>
+                          {{ endfor }}
+                      </tr>
+                  {{ endfor }}
+              </table></div>
 
               
-              <p class="text">
-                Wir bitten Sie, einige demografische Informationen bereitzustellen, um uns bei der Analyse und Interpretation der Ergebnisse zu unterstützen. Diese Daten sind wichtig, um sicherzustellen, dass unsere Studie eine vielfältige Stichprobe umfasst und um fundierte Schlussfolgerungen ziehen zu können.
-              </p>
-              <div class="custom-survey add-top-margin add-bottom-margin">
-                
-                <span class="text"><b>1. Was ist Ihr höchster Bildungsabschluss?</b>
-                
-                    <div>
-                        <br>
-
-                        {{ form.education }}
-
-                    </div>
-                </div></span>
-                
-
-              <div class="custom-survey add-top-margin add-bottom-margin">
-                
-              <label for="age"><b>2. Alter</b></label>
-              <br>
-              {% form.age %}
-              <br>
-              </div>
-
-              <div class="custom-survey add-top-margin add-bottom-margin">
-                    <label for="gender"><b>3. Geschlecht</b></label>
-                    <br>
-                    {% form.gender %}
-                    
-                    </select><br></div>
-
-
-
-      </div>
     </div>
-</div>
 
-</body>
-
-
-
-
-
-
-{{ next_button }}
-
-{{ endblock }}
+    </html>
+    
+    
+    {{ next_button }}
+    
+    {{ endblock }}

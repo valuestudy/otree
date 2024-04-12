@@ -1,3 +1,4 @@
+
 {{ block title }} 
 
 
@@ -49,63 +50,52 @@
   {{ endblock }}
 {{ block content }}
 
-
-
-
-
-<div class="content">
-    <div class="content-table flex-column">
+    <div class="content">
+      <div class="content-table flex-column">
         <div class="flex-row">
-      
-  <div class="flex-row">
             <div class="flex-item flex-column-survey">
-              <h2 id="Survey">Demografische Daten</h2>
-              <hr>
-
-              
-              <p class="text">
-                Wir bitten Sie, einige demografische Informationen bereitzustellen, um uns bei der Analyse und Interpretation der Ergebnisse zu unterstützen. Diese Daten sind wichtig, um sicherzustellen, dass unsere Studie eine vielfältige Stichprobe umfasst und um fundierte Schlussfolgerungen ziehen zu können.
-              </p>
-              <div class="custom-survey add-top-margin add-bottom-margin">
+                <h2 id="Survey">Wissen über Datenschutzrecht</h2>
+                <hr>
+                <p class="text">
+                Bitte beantworten Sie folgende Fragen zum Kentnissstand zum Thema online Privatsphäre.
+                <br>
+                </p>
                 
-                <span class="text"><b>1. Was ist Ihr höchster Bildungsabschluss?</b>
                 
-                    <div>
-                        <br>
+                <div class="custom-survey add-top-margin add-bottom-margin">
+                  
+                    {% formfield 'question21' %}
 
-                        {{ form.education }}
+                  </div>
 
-                    </div>
-                </div></span>
-                
+                  <div class="custom-survey add-top-margin add-bottom-margin">
 
-              <div class="custom-survey add-top-margin add-bottom-margin">
-                
-              <label for="age"><b>2. Alter</b></label>
-              <br>
-              {% form.age %}
-              <br>
+                    {% formfield 'question22' %}
+
+                  </div>
+
+                  <div class="custom-survey add-top-margin add-bottom-margin">
+
+                    {% formfield 'question23' %}
+
+                  </div>
+
+                  <div class="custom-survey add-top-margin add-bottom-margin">
+
+                    {% formfield 'question24' %}
+
+                  </div>
+
+                  <div class="custom-survey add-top-margin add-bottom-margin">
+
+                    {% formfield 'question25' %}
+
+                  </div>
+              </div>
               </div>
 
-              <div class="custom-survey add-top-margin add-bottom-margin">
-                    <label for="gender"><b>3. Geschlecht</b></label>
-                    <br>
-                    {% form.gender %}
-                    
-                    </select><br></div>
 
-
-
-      </div>
-    </div>
-</div>
-
-</body>
-
-
-
-
-
+              
 
 {{ next_button }}
 

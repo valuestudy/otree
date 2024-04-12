@@ -161,63 +161,167 @@ class Player(BasePlayer):
             widget=widgets.RadioSelectHorizontal,
         )
 
-# SURVEY Knowledge2.html
+# SURVEY Knowledge2.html / 1 is true, 0 is false
 
-    question16 = models.StringField(
-            label="1. Was verbirgt sich hinter dem Begriff 'Browserverlauf'?",
+    question16 = models.IntegerField(
+            label="<b>1. Was verbirgt sich hinter dem Begriff 'Browserverlauf'? Im Browserverlauf werden...</b>",
             choices=[
-                ['A', '... die Adressen besuchter Websites gespeichert.'],
-                ['B', '... Cookies von besuchten Websites abgelegt.'],
-                ['C', '... potenziell infizierte Websites separat abgelegt.'],
-                ['D', '... je nach Browsertyp unterschiedliche Informationen über den Nutzer gespeichert.']
+                ['1', '... die Adressen besuchter Websites gespeichert.'],
+                ['0', '... Cookies von besuchten Websites abgelegt.'],
+                ['0', '... potenziell infizierte Websites separat abgelegt.'],
+                ['0', '... je nach Browsertyp unterschiedliche Informationen über den Nutzer gespeichert.']
             ],
             widget=widgets.RadioSelect,
         )
 
-    question17 = models.StringField(
-            label="2. Was ist ein Cookie?",
+    question17 = models.IntegerField(
+            label="<b>2. Was ist ein Cookie?</b>",
             choices=[
-                ['A', 'Eine Text-Datei, die es Websites ermöglicht, den Nutzer beim erneuten Besuch wiederzuerekennen'],
-                ['B', 'Ein Programm, mit dem man die Datenspeicherung von Webanbietern unterbinden kann.'],
-                ['C', 'Ein Computer-Virus, das man sich beim Besuch einer Website einfangen kann.'],
-                ['D', 'Ein Browser Plugin, das sicheres Surfen gewährleistet.']
+                ['1', 'Eine Text-Datei, die es Websites ermöglicht, den Nutzer beim erneuten Besuch wiederzuerekennen'],
+                ['0', 'Ein Programm, mit dem man die Datenspeicherung von Webanbietern unterbinden kann.'],
+                ['0', 'Ein Computer-Virus, das man sich beim Besuch einer Website einfangen kann.'],
+                ['0', 'Ein Browser Plugin, das sicheres Surfen gewährleistet.']
             ],
             widget=widgets.RadioSelect,
         )
     
-    question18 = models.StringField(
-            label="3. Was versteht man unter dem Begriff 'Cache'?",
+    question18 = models.IntegerField(
+            label="<b>3. Was versteht man unter dem Begriff 'Cache'?</b>",
             choices=[
-                ['A', 'Ein Browser-Plug-In, welches den Datentransfer beim Surfen verschlüsselt.'],
-                ['B', 'Ein Programm, welches Daten auf eine externe Festplatte kopiert, um diese vor Datenklau zu schützen.'],
-                ['C', 'Ein Programm, welches Daten über den Internetnutzer gezielt ausspioniert und dann Dritte weiterleitet.'],
-                ['D', 'Einen Puffer-Speicher, der das Surfen im Internet beschleunigt.']
+                ['0', 'Ein Browser-Plug-In, welches den Datentransfer beim Surfen verschlüsselt.'],
+                ['0', 'Ein Programm, welches Daten auf eine externe Festplatte kopiert, um diese vor Datenklau zu schützen.'],
+                ['0', 'Ein Programm, welches Daten über den Internetnutzer gezielt ausspioniert und dann Dritte weiterleitet.'],
+                ['1', 'Einen Puffer-Speicher, der das Surfen im Internet beschleunigt.']
             ],
             widget=widgets.RadioSelect,
         )
     
-    question19 = models.StringField(
-            label="4. Was versteht man unter einem 'Trojaner'?",
+    question19 = models.IntegerField(
+            label="<b>4. Was versteht man unter einem 'Trojaner'?</b>",
             choices=[
-                ['A', '... den Rechner vor Viren und anderen Schadprogrammen schützt.'],
-                ['B', '... als nützliche Anwendung getarnt ist, im Hintergrund aber eine andere Funktion erfüllt.'],
-                ['C', '... nur zum Spaß entwickelt wurde und keine spezifische Funktion hat.'],
-                ['D', '... als Computervirus in den 90ern Schaden anrichtete, heute aber nicht mehr existiert.']
+                ['0', '... den Rechner vor Viren und anderen Schadprogrammen schützt.'],
+                ['1', '... als nützliche Anwendung getarnt ist, im Hintergrund aber eine andere Funktion erfüllt.'],
+                ['0', '... nur zum Spaß entwickelt wurde und keine spezifische Funktion hat.'],
+                ['0', '... als Computervirus in den 90ern Schaden anrichtete, heute aber nicht mehr existiert.']
             ],
             widget=widgets.RadioSelect,
         )
     
-    question20 = models.StringField(
-        label="5. Was ist eine 'Firewall'?",
+    question20 = models.IntegerField(
+        label="<b>5. Was ist eine 'Firewall'?</b>",
         choices=[
-            ['A', 'Eine neue technische Entwicklung, die verhindert, dass Daten bei einem Kurzschluss verloren gehen.'],
-            ['B', 'Ein Browser-Plugin, das sicheres Surfen ermöglicht.'],
-            ['C', 'Ein veraltetes Schutzprogramm gegen Computer-Viren.'],
-            ['D', 'Ein Sicherungssystem, das den Computer vor unerwünschten Netzangriffen schützen soll.']
+            ['0', 'Eine neue technische Entwicklung, die verhindert, dass Daten bei einem Kurzschluss verloren gehen.'],
+            ['0', 'Ein Browser-Plugin, das sicheres Surfen ermöglicht.'],
+            ['0', 'Ein veraltetes Schutzprogramm gegen Computer-Viren.'],
+            ['1', 'Ein Sicherungssystem, das den Computer vor unerwünschten Netzangriffen schützen soll.']
+        ],
+        widget=widgets.RadioSelect,
+    )
+# SURVEY Law.html
+
+    question21 = models.StringField(
+        label="<b>Die Weiterleitung anonymisierter Nutzerdaten zu Marktforschungszwecken in der EU ist gesetzlich erlaubt.</b>",
+        choices=[
+            ('1', 'Wahr'),
+            ('0', 'Falsch'),
+            ('NA', 'Weiß nicht'),
         ],
         widget=widgets.RadioSelect,
     )
 
+    question22 = models.IntegerField(
+        label="<b>Die EU-Richtlinien zum Datenschutz (z.B. die ePrivacy Richtlinie)...</b>",
+        choices=[
+            ('0', '...geben den EU-Ländern lediglich eine unverbindliche Orientierung hinsichtlich ihrer Datenschutzgesetze.'),
+            ('0', '...gelten als länderübergreifendes EU-Datenschutzgesetz.'),
+            ('1', '...müssen von allen EU-Ländern in das nationale Datenschutzgesetz implementiert werden.'),
+            ('0', '...existieren bisher noch nicht.'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    question23 = models.StringField(
+        label="<b>Für alle sozialen Netzwerkseiten gelten in Deutschland die gleichen Standard-AGBs. Abweichungen müssen von den Betreibern kenntlich gemacht werden.</b>",
+        choices=[
+            ('0', 'Wahr'),
+            ('1', 'Falsch'),
+            ('NA', 'Weiß nicht'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    question24 = models.StringField(
+        label="<b>Laut dem deutschen Gesetz haben Nutzer von Online-Anwendungen, die personenbezogene Daten erheben und verarbeiten, einen Anspruch darauf, die über sie gespeicherten Daten einzusehen.</b>",
+        choices=[
+            ('1', 'Wahr'),
+            ('0', 'Falsch'),
+            ('NA', 'Weiß nicht'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    question25 = models.IntegerField(
+        label="<b>Informationelle Selbstbestimmung ist...</b>",
+        choices=[
+            ('1', '...ein Grundrecht deutscher Bürger.'),
+            ('0', '...ein philosophischer Begriff.'),
+            ('0', '...die zentrale Forderung datenverarbeitender Stellen.'),
+            ('0', '...die zentrale Aufgabe des Bundesdatenschutzbeauftragten.'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+# Survey Law2.html
+
+    question26 = models.StringField(
+            label="Das Nachverfolgen der eigenen Internetnutzung kann durch das regelmäßige Löschen von Browserinformationen (Cookies, Cache, Browserverlauf) nicht erschwert werden.",
+            choices=[
+                ('1', 'Wahr'),
+                ('0', 'Falsch'),
+                ('NA', 'Weiß nicht'),
+            ],
+            widget=widgets.RadioSelect,
+    )
+
+    question27 = models.StringField(
+            label="Durch das Surfen im 'Private Browsing'-Modus kann die Rekonstruktion des eigenen Surfverhaltens erschwert werden, da keine Browserinformationen gespeichert werden.",
+            choices=[
+                ('1', 'Wahr'),
+                ('0', 'Falsch'),
+                ('Weiß nicht', 'Weiß nicht'),
+            ],
+            widget=widgets.RadioSelect,
+    )
+
+    question28 = models.StringField(
+            label="Durch die Nutzung von falschen Namen oder Pseudonymen kann die Identifizierung der eigenen Person im Internet zumindest erschwert werden.",
+            choices=[
+                ('1', 'Wahr'),
+                ('0', 'Falsch'),
+                ('NA', 'Weiß nicht'),
+            ],
+            widget=widgets.RadioSelect,
+        )
+
+    question29 = models.StringField(
+            label="Auch wenn selbst schwere Passwörter von IT-Profis geknackt werden können, ist es sinnvoll, Passwörter zu verwenden, die aus einer Kombination von Buchstaben, Zahlen und Sonderzeichen bestehen und keine Wörter, Namen oder einfache Zahlenkombinationen enthalten.",
+            choices=[
+                ('1', 'Wahr'),
+                ('0', 'Falsch'),
+                ('NA', 'Weiß nicht'),
+            ],
+            widget=widgets.RadioSelect,
+        )
+
+    question30 = models.StringField(
+            label="Um den Zugang zu eigenen Daten zu erschweren, sollte man verschiedene Passwörter und Benutzernamen für unterschiedliche Anwendungen nutzen und diese häufig ändern.",
+            choices=[
+                ('1', 'Wahr'),
+                ('0', 'Falsch'),
+                ('NA', 'Weiß nicht'),
+            ],
+            widget=widgets.RadioSelect,
+        )
 # FUNCTIONS
 
 
@@ -243,9 +347,21 @@ class Knowledge2(Page):
     form_model = 'player'
     form_fields = ['question16', 'question17', 'question18', 'question19', 'question20']
 
+class Law(Page):
+    form_model = 'player'
+    form_fields = ['question21', 'question22', 'question23', 'question24', 'question25']
+
+
+class Law2(Page):
+    form_model = 'player'
+    form_fields = ['question26', 'question27', 'question28', 'question29', 'question30']
+
+
 
 page_sequence = [Demographics, 
                  Preferences,
                    Preferences2,
                     Knowledge,
-                     Knowledge2 ]
+                     Knowledge2,
+                      Law,
+                       Law2 ]
