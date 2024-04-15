@@ -1,0 +1,106 @@
+{{ block title }} 
+
+
+
+
+
+    <div class="menu" style="background-color:#ffffff;">
+    <div class="menu-table flex-row-space-between" style="border-bottom: 1px solid black; ">
+      <div class="logo flex-row-center">
+        <img src="{% static 'img/favicon.ico' %}" style="margin-right: 20px; 
+        max-width:50px;
+        max-height:40px;"><br>
+        
+        <a href="index.html">Value Study</a>
+      </div>
+      <a class="menu-button" tabindex="0" href="javascript:void(0)">
+        <img src="{% static 'img/menu.png' %}">
+      </a>
+      <div class="menu-items flex-row-center flex-item">
+        <a class="menu-embedding" href="">Overview</a>
+        <a class="menu-widget" href="">About us</a>
+        <a class="menu-embedding" href="">Privacy</a>
+
+ 
+        
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/controls.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/frame.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{% static 'js/menu.js' %}"></script>
+  <script src="{% static 'js/footer.js' %}"></script>
+  <script src="{% static 'js/widgets.js' %}"></script>
+  <script src="{% static 'js/util.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  
+  {{ endblock }}
+{{ block content }}
+
+
+
+<body>
+<div class="menu-container"></div>
+<div class="content-container">
+  
+    <div class="banner" style="color: black;  background-color: rgb(209, 209, 209); max-width: 900px; margin: 0 auto;">
+    <div class="banner-table flex-column">
+      <div class="flex-row">
+        <div class="flex-item flex-column">
+        <h3> Informationen über weitere Vergütungsmöglichkeiten </h3>
+        <br>
+      <div class="flex-row" style="margin-top: 30px;">
+  
+        <p>
+            Wenn Sie diese Umfrage vollenden, erhalten Sie in jedem Fall eine Entlohnung von […] EUR. Darüber hinaus können Sie eine zusätzliche Entlohnung erhalten, wenn Sie sich in diesem Teil der Umfrage dazu entschließen, sich in Ihrem Google Konto auf dieser Webseite anzumelden. 
+            <br>
+            <br>
+            Sie werden im Folgenden gebeten, anzugeben, für welchen Betrag Sie bereit dazu wären, sich auf dieser Website mit Ihrem Google Konto anzumelden. Sie können einen Betrag zwischen 0,- EUR und 5,- EUR angeben. Wollen Sie sich grundsätzlich nicht, oder nicht zu diesem Preis, mit Ihrem Google Account anmelden, können Sie die Schaltfläche „Ich möchte ohne Anmeldung mit der Umfrage fortfahren“ betätigen.
+            <br>
+            <br>
+            Entscheiden Sie sich dazu, einen Preis anzugeben, wird der für Ihre zusätzliche Auszahlung relevante Preis per Zufall bestimmt. 
+            
+        </p>
+
+        <ul>
+            
+            <li>
+            Beispiel 1: Sie geben eine Bereitschaft von 2,50 EUR an. Per Zufall wird der Preis auf 2,- EUR festgelegt. Dann fahren Sie mir der Umfrage fort, ohne dass Sie sich anmelden müssen. 
+            </li>
+            <br>
+            <li>
+            Beispiel 2: Sie geben eine Bereitschaft von 2,50 EUR an. Per Zufall wird der Preis auf 4,50 EUR festgelegt. Sie erhalten bei Beendigung der Umfrage Ihren Bereitschatspreis von 2,50 EUR <i>zusätzlich</i> zu dem Grundbetrag von […],- EUR. 
+            </li>
+            <br>
+            <li>
+            <b>Bitte beachten Sie:</b> Wenn Sie einen Preis angeben und dieser oder ein höherer Preis ausgelost wird, <i>müssen</i> Sie sich mit einem Google Account auf der Website anmelden. Andernfalls können Sie nicht mit der Umfrage fortfahren und erhalten auch keine Vergütung. 	
+            </li>
+        </ul>
+          <br>
+    </div>
+    <br>
+    {{ next_button }}
+        </div>
+        </div>
+        </div>
+   
+</div>
+
+
+
+
+
+{{ endblock }}
+

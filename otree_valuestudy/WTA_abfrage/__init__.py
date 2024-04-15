@@ -21,20 +21,33 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+
+    slider = models.FloatField(
+        label='Choose a value between 0 and 5 EUR:',
+        min=0,
+        max=5
+    )
+
+
+    
 
 
 # PAGES
-class MyPage(Page):
+class WTA_abfrage4(Page):
     pass
 
 
-class ResultsWaitPage(WaitPage):
-    pass
+class WTA_abfrage2(Page):
+
+    form_model = 'player'
+    form_fields = ['slider']
 
 
-class Results(Page):
-    pass
+   
 
 
-page_sequence = [MyPage, ResultsWaitPage, Results]
+
+
+
+
+page_sequence = [WTA_abfrage4, WTA_abfrage2]
