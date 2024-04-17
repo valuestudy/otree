@@ -2,8 +2,6 @@
 
 
 
-
-
     <div class="menu" style="background-color:#ffffff;">
     <div class="menu-table flex-row-space-between" style="border-bottom: 1px solid black; ">
       <div class="logo flex-row-center">
@@ -50,38 +48,8 @@
 {{ block content }}
 
 
- 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        select {
-            padding: 8px;
-            font-size: 16px;
-        }
-
-        button {
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-right: 10px;
-            margin-bottom: 8px;
-            margin-top: 10px;
-        }
-        
-        form {
-        position: relative;
-        margin: 0 auto 20px 160px;
-      }
       /* For the design of the Google button */
-
       
       .gsi-material-button {
         -moz-user-select: none;
@@ -114,14 +82,12 @@
         max-width: 400px;
         min-width: min-content;
       }
-
       .gsi-material-button .gsi-material-button-icon {
         height: 20px;
         margin-right: 12px;
         min-width: 20px;
         width: 20px;
       }
-
       .gsi-material-button .gsi-material-button-content-wrapper {
         -webkit-align-items: center;
         align-items: center;
@@ -135,7 +101,6 @@
         position: relative;
         width: 100%;
       }
-
       .gsi-material-button .gsi-material-button-contents {
         -webkit-flex-grow: 1;
         flex-grow: 1;
@@ -145,7 +110,6 @@
         text-overflow: ellipsis;
         vertical-align: top;
       }
-
       .gsi-material-button .gsi-material-button-state {
         -webkit-transition: opacity .218s;
         transition: opacity .218s;
@@ -156,254 +120,200 @@
         right: 0;
         top: 0;
       }
-
       .gsi-material-button:disabled {
         cursor: default;
         background-color: #ffffff61;
         border-color: #1f1f1f1f;
       }
-
       .gsi-material-button:disabled .gsi-material-button-contents {
         opacity: 38%;
       }
-
       .gsi-material-button:disabled .gsi-material-button-icon {
         opacity: 38%;
       }
-
       .gsi-material-button:not(:disabled):active .gsi-material-button-state, 
       .gsi-material-button:not(:disabled):focus .gsi-material-button-state {
         background-color: #303030;
         opacity: 12%;
       }
-
       .gsi-material-button:not(:disabled):hover {
         -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
         box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
       }
-
       .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
         background-color: #303030;
         opacity: 8%;
       }
-
-
-
     </style>
 
+    <script>
 
-    
+      
+        function signInWithGoogle() {
+          var provider = new firebase.auth.GoogleAuthProvider();
+      
+          firebase.auth().signInWithPopup(provider)
+            .then(function(result) {
+              // User is signed in.
+              var user = result.user;
+              console.log(user);
+              // Redirect to the next page after successful sign-in
+            //window.location.href = '/survey_preferences.html';
+            })
+            .catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              console.error(errorCode, errorMessage);
+            });
+        }
+      </script>
+  
+  {% block scripts %}
+  <!-- Add Firebase SDK Scripts with defer attribute -->
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
+  {% endblock %}
+<!-- Firebase Configuration Script -->
+<script>
+            
+            
 
-{% block scripts %}
-  <script>
-    /* connect with Google´s API*/
 
-        document.addEventListener("DOMContentLoaded", function() {
-          const firebaseConfig = {
-            apiKey: "AIzaSyDF1e_FBAv4P1krAwTKVyP3F5g4knp4Hew",
-            /*authDomain: "valuestudy.firebaseapp.com", */
-            authDomain: 'http://localhost:8000',
-            databaseURL: "https://valuestudy-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "valuestudy",
-            storageBucket: "valuestudy.appspot.com",
-            messagingSenderId: "1092513324979",
-            appId: "1:1092513324979:web:b6823acdd1d63aca5935c6"
-          };
 
-          const firebaseApp = firebase.initializeApp(firebaseConfig);
-        })
-
-    /* sign in Google function*/
-
-      function signInWithGoogle() {
-        var provider = new firebase.auth.GoogleAuthProvider();
-    
-        firebase.auth().signInWithPopup(provider)
-          .then(function(result) {
-            // User is signed in.
-            var user = result.user;
-            console.log(user);
-
-            // Redirect to the next page after successful sign-in
-          window.location.href = '/demographics.html';
-          })
-          .catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.error(errorCode, errorMessage);
-          });
-      }
+        /* Initializing the disappearing text */
+        document.addEventListener("DOMContentLoaded", function () {
+              const slider = document.getElementById("wta");
+              const chosenPriceElement = document.getElementById('chosenPrice');
+              // Function to update the chosen price
+              function updateSliderValue() {
+                const sliderValue = parseFloat(slider.value);
+                chosenPriceElement.textContent = `${sliderValue.toFixed(2)} EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre. `;
+              }
+              // Add an event listener for the input event on the slider
+              slider.addEventListener("input", updateSliderValue);
+              // Initial update
+              updateSliderValue();
+            });
     </script>
-{% endblock %}
 
 
 
 <div class="content">
-  <div class="content-table flex-column">
-    <div class="flex-row">
-        <div class="flex-item flex-column-survey">
-          
-        <h2>Angabe Ihrer Zahlungsbereitschaft </h2>
-
-       
-          <label for="wta" style="text-align: center;">Ich wäre für einen Betrag von:</label>
-          
-            <input type="range" id="wta" name="wta" min="0" max="5" step="0.01" value="0" />
-            
-              <div class="label">0 EUR</div>
-              <div class="label">2.5 EUR</div>
-              <div class="label">5 EUR</div>
+    <div class="content-table flex-column">
               <br>
-            
+            <h2>Angabe Ihrer Zahlungsbereitschaft </h2>
             <br>
-          
-        
-        
-        <br>
-        <div class="chosen-price" id="chosenPrice" style="margin-top: 20px;">0.00 EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre. </div>
-
-      </p>
-
-      {% block scripts %}
-        <script>
-
-
-
-
-
-            document.addEventListener("DOMContentLoaded", function () {
-                  const slider = document.getElementById("wta");
-                  const chosenPriceElement = document.getElementById('chosenPrice');
-
-                  // Function to update the chosen price
-                  function updateSliderValue() {
-                    const sliderValue = parseFloat(slider.value);
-                    chosenPriceElement.textContent = `${sliderValue.toFixed(2)} EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre. `;
-                  }
-
-                  // Add an event listener for the input event on the slider
-                  slider.addEventListener("input", updateSliderValue);
-
-                  // Initial update
-                  updateSliderValue();
-                });
-
-
-        </script>
-      {% endblock %}
-        
-
-
-
-          <button id="simulateButton" type="button" onclick="simulateExperiment()">Bestätigen</button>
-
-              <!-- Add this element to display the assigned price as text on the website -->
-            <div id="assignedPriceText" style="margin-top: 10px;"></div>
-
-            <button id="weiterButton" type="button" onclick="weiterButtonClick()" style="display: none;">Weiter</button>
+            <br>
+           <p style="text-align: center; margin-top: 20px;">Ich wäre für einen Betrag von:
 
             <br>
+             
+                0 EUR&nbsp;&nbsp;&nbsp;<input type="range" id="wta" name="wta" min="0" max="5" step="0.01" value="0" style="width: 300px; text-align: center;" />&nbsp;&nbsp;&nbsp;5 EUR
+                
+                
+                <br>
+              
             
+            <br>
+            <div class="chosen-price" id="chosenPrice" style="text-align: center;"> 0.00 EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre. </div>
+  
+              <button id="simulateButton" type="button" style="width: 200px; text-align: center; margin-top: 20px;" onclick="simulateExperiment()">Bestätigen</button>
+                  <!-- Add this element to display the assigned price as text on the website -->
+                <div id="assignedPriceText" style="margin-top: 10px;"></div>
 
 
-            
-        </form>
-        <div id="googleSignInContainer" style="display: none;">
-          <button class="gsi-material-button" onclick="signInWithGoogle()"> 
-          
-              <div class="gsi-material-button-state"></div>
-              <div class="gsi-material-button-content-wrapper">
-                <div class="gsi-material-button-icon">
-                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
-                    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
-                    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
-                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
-                    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
-                    <path fill="none" d="M0 0h48v48H0z"></path>
-                  </svg>
+                
+                <div id="weiterButton"  style="display: none; text-align: center;">
+                    {{ next_button }}</div>
+                  
+                  <div id="additionalText" style="margin-top: 10px;"></div>
+                <br>
+                
+              <!-- Google sign in Module , put here the link where page should redirect-->  
+            <div id="googleSignInContainer" style="display: none;  margin-top: 30px;">
+              
+                <script src="https://accounts.google.com/gsi/client" async></script>
+                <div id="g_id_onload"
+                    data-client_id="1092513324979-vg7tvd60ht6mc37nn3jpr2o2hud4ibqa.apps.googleusercontent.com"
+                    data-login_uri="/p/xlie8otb/survey/Demographics/1"
+                    data-redirect_uri="localhost:8000/p/xuq6xu7b/WTA_abfrage/WTA_abfrage2/2"  
+                    data-auto_prompt="false">
                 </div>
-                <span class="gsi-material-button-contents">Melden Sie sich bei Google an um fortzufahren</span>
-                <span style="display: none;">Sign in with Google</span>
-              </div>
-            </button>
-      
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-size="large"
+                    data-theme="outline"
+                    data-text="sign_in_with"
+                    data-shape="rectangular"
+                    data-logo_alignment="left">
+                </div>
+              <body>
+                </div>
+              </button>
+                </p>
+            </div>
+
+
           
-          </div>
-        </div>
-        </div>
-        </div>
-</div> 
 
-<div class="banner" style="color: black;  background-color: rgb(209, 209, 209); max-width: 900px; margin: 0 auto;">
-  <div class="banner-table flex-column">
- 
-<p  style="text-align: center;">
-    <b>Oder:</b>
-    <br>
-    Ich bin nicht bereit, mich für eine Zusatzvergütung mit meinem Google Konto einzuloggen, weil
-    <form id="loginOptionsForm">
-      <label>
-        <input type="radio" name="loginOption" value="option1"> ich das grundsätzlich nicht möchte.
-      </label>
-      <label>
-        <input type="radio" name="loginOption" value="option2"> ich dafür nur bereit wäre für einen Betrag, der über 5 EUR liegt.
-    </label>
-          <div id="amountInput" style="display: none; text-align: center;">
-              <label for="amount"><i>Ich wäre für den folgenden Betrag bereit, mich mit meinem Google Konto einzuloggen:</i></label>
-              <input type="number" id="amount" name="amount" min="5" step="0.01">
-          </div>
-          <label>
-              <input type="radio" name="loginOption" value="option3"> ich kein Google Konto habe.
-          </label>
-          <button type="submit" id="submitButton" style="display: block; margin: 0 auto; margin-top: 20px;" disabled>Weiter ohne Möglichkeit einer Zusatzvergütung</button>
-      
-      
-        </form>
-      </p>
-      </div>
-      </div>
-
-
-      
-    {% block scripts %}
+    
     <script>
-
-      const form = document.getElementById("loginOptionsForm");
-      const submitButton = document.getElementById("submitButton");
-      const amountInput = document.getElementById("amountInput");
-
-      form.addEventListener("change", function() {
-      if (form.loginOption.value === "option2") {
-      amountInput.style.display = "block";
-      } else {
-      amountInput.style.display = "none";
+      let assignedPrice;
+      let experimentConducted = false;
+      function simulateExperiment() {
+            // Check if the experiment has already been conducted
+            if (experimentConducted) {
+                alert("Experiment has already been conducted. You cannot redo it.");
+                return;
+            }
+            // Get the selected WTA value
+            const selectedWTA = parseFloat(document.getElementById("wta").value);
+            // Simulate the random assignment of a price
+            assignedPrice = Math.random() * 5; // Random number between 0 and 5
+            // Show the assigned price on the webpage
+            document.getElementById("assignedPriceText").innerText = `Sie haben angegeben, gegen eine Zahlung von ${selectedWTA.toFixed(2)},- EUR bereit zu sein, sich mit Ihrem Google Account anzumelden. Vielen Dank für diese Angabe. Der Preis für die Anmeldung wurde zufällig bestimmt. Er beträgt ${assignedPrice.toFixed(2)} EUR. Der ausgeloste Preis liegt unter der von Ihnen angegebenen Bereitschaft. Sie können jetzt mit der Umfrage fortfahren. `;
+            // Compare the random price with the selected WTA
+            if (assignedPrice > selectedWTA) {
+                // Display the Google Sign-In container
+                document.getElementById("googleSignInContainer").style.display = "block";
+                // Show the text for prices above WTA
+                document.getElementById("additionalText").innerText = `Der ausgeloste Preis liegt über der von Ihnen angegebenen Bereitschaft. Sie erhalten am Ende der Umfrage eine zusätzliche Zahlung von ${assignedPrice.toFixed(2)} EUR. Bitte melden Sie sich jetzt mit Ihrem Google Konto an:`;
+                // Hide other buttons
+                document.getElementById("weiterButton").style.display = "none";
+                
+            } else {
+                // Show the Weiter button for prices below or equal to WTA
+                // Display additional text
+                document.getElementById("additionalText").innerText = "";
+                // Hide the Google Sign-In container
+                document.getElementById("googleSignInContainer").style.display = "none";
+                
+                document.getElementById("weiterButton").style.display = "block";
+            }
+              // Set the flag to true after the experiment is conducted
+              experimentConducted = true;
+              document.getElementById("simulateButton").disabled = true;
+        }
+      function showAssignedPrice() {
+          if (assignedPrice === undefined) {
+              alert(`Please simulate the experiment first.`);
+          } else {
+              alert(`Assigned Price: ${assignedPrice.toFixed(2)} EUR`);
+          }
       }
-      submitButton.disabled = false;
-      });
+      function continueToSurvey() {
 
-      form.addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent default form submission behavior
-
-      const formData = new FormData(form);
-      // Example: Log the form data to the console
-      for (const [name, value] of formData) {
-      console.log(`${name}: ${value}`);
+        console.log("Google Sign in Worked!");
+          // Redirect to the survey page (replace "survey.html" with the actual page URL)
+         // window.location.href = "survey_preferences.html";
       }
-      // Redirect to the specified URL
-      form.submit();
-      console.log("Form submitted");
-
-      });
+      
     </script>
-
-    {% endblock %}
-
-
-
-
-
-
-
+    
+    
 
 {{ endblock }}
+

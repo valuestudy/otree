@@ -23,7 +23,7 @@ SESSION_CONFIGS = [
     dict(
         name='survey', 
         display_name="The survey about internet usage for participants",
-        app_sequence=['WTA_abfrage','cookiebanner', 'survey'], 
+        app_sequence=['survey'], 
         num_demo_participants=1
     ),
 ]
