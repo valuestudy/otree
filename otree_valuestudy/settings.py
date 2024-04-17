@@ -5,21 +5,21 @@ from os import environ
 
 SESSION_CONFIGS = [
     
+dict(
+        name='cookiebanner', 
+        display_name="The cookiebanner shown to participants",
+        app_sequence=['cookiebanner', 'WTA_abfrage', 'survey'], 
+        num_demo_participants=1
+    ),
 
     dict(
         name='WTA_abfrage', 
         display_name="The WTA method.",
-        app_sequence=['WTA_abfrage','cookiebanner', 'survey'], 
+        app_sequence=['WTA_abfrage'], 
         num_demo_participants=1
     ),
 
-    dict(
-        name='cookiebanner', 
-        display_name="The cookiebanner shown to participants",
-        app_sequence=['WTA_abfrage','cookiebanner','survey'], 
-        num_demo_participants=1
-    ),
-
+    
     dict(
         name='survey', 
         display_name="The survey about internet usage for participants",

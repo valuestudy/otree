@@ -1,9 +1,6 @@
 {{ block title }} 
 
 
-
-
-
     <div class="menu" style="background-color:#ffffff;">
     <div class="menu-table flex-row-space-between" style="border-bottom: 1px solid black; ">
       <div class="logo flex-row-center">
@@ -76,9 +73,9 @@
       </p>
 
       <div class="cookie-buttons" id="cookieButtons">
-        <button id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren</button>
-        <button id="decline-all-cookies" class="cookie-button decline-button" onclick="declineAllCookies()">Nicht-essenzielle Cookies ablehnen</button>
-        <button id="custom-button-design2" class="cookie-button" style="display: none;" onclick="showManageCookies()">Einstellungen</button>
+        <button type="button" id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren</button>
+        <button type="button" id="decline-all-cookies" class="cookie-button decline-button" onclick="declineAllCookies()">Nicht-essenzielle Cookies ablehnen</button>
+        <button type="button" id="custom-button-design2" class="cookie-button" style="display: none;" onclick="showManageCookies()">Einstellungen</button>
 
         </div>
         <br>
@@ -136,8 +133,8 @@
       
       <!-- Button design1 which has the green accept all button -->
       <p class="cookie-setting design1-cookie-setting" style="display: none; text-align: center;">
-        <button id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren</button>
-        <button id="zurueckButton" class="cookie-button" onclick="applyCookieSettings()">Einstellungen anwenden</button>
+        <button type="button" id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren</button>
+        <button type="button" id="zurueckButton" class="cookie-button" onclick="applyCookieSettings()">Einstellungen anwenden</button>
       </p> 
       </div>
       </div>
@@ -270,56 +267,24 @@
       setRandomDesign();
       </script>
       
-      
-      
-
 
 <!--End Cookie Banner-->
     <!-------------------------------------------------------------------------------------------->
 
 
 
-<head>
-  <title>Value Study</title>
-
-  <link rel="stylesheet" type="text/css" href="{% static 'css/controls.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/frame.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">
-
-
-
-  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  
-  <script src="{% static 'js/menu.js' %}"></script>
-  <script src="{% static 'js/footer.js' %}"></script>
-  <script src="{% static 'js/widgets.js' %}"></script>
-  <script src="{% static 'js/util.js' %}"></script>
-  <script src="{% static 'js/custom.js' %}"></script>
-  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
-
-
-
-</head>
-
-<body>
   <div class="menu-container"></div>
   <div class="content-container">
     <!-------------------------------------------------------------------------------------------->
     <!--Start Header-->
     <div class="banner" style="background: url('{% static 'img/example-scene.svg' %}') no-repeat center; background-size: contain; height: 300px;"></div>
+    
+    
     <div class="banner" style="color: black;  background-color: rgb(255, 225, 0); max-width: 900px; margin: 0 auto;">
-      <div class="banner-table flex-column">
-        <div class="flex-row">
-          <div class="flex-item flex-column">
+
+      <div class="banner-table flex-column" style="background-color: rgb(255, 225, 0);">
+        <div class="flex-row" >
+          <div class="flex-item flex-column" style="background-color: rgb(255, 225, 0);">
           <h2 class="add-top-margin-small">Vielen Dank für Ihre Teilnahme an unserer Studie!</h2>
           <br>
           <p class="text">
@@ -337,9 +302,9 @@
             
           </div>
         </div>
-      <a href="consent.html" class="small-button">Studie beginnen</a>
+      <button class="small-button">Studie beginnen</button>
 
-      {{ next_button }}
+      
       </div>
     </div>
   </div>
