@@ -26,6 +26,13 @@ dict(
         app_sequence=['survey'], 
         num_demo_participants=1
     ),
+
+     dict(
+        name='debriefing', 
+        display_name="The last part of the survey.",
+        app_sequence=['debriefing'], 
+        num_demo_participants=1
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs

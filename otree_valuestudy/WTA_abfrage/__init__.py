@@ -1,6 +1,4 @@
 from otree.api import *
-import firebase  #in command prompt: npm install firebase; yarn add firebase
-
 
 
 doc = """
