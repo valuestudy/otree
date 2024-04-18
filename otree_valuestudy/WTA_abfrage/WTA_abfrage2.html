@@ -211,11 +211,12 @@
 
             <br>
              
-                0 EUR&nbsp;&nbsp;&nbsp;<input type="range" id="wta" name="wta" min="0" max="5" step="0.01" value="0" style="width: 300px; text-align: center;" />&nbsp;&nbsp;&nbsp;5 EUR
+                0 EUR&nbsp;&nbsp;&nbsp;<input type="range" id="wta" name="WTA" min="0" max="{{ C.ENDOWMENT }}" step="0.01" value="1.5" style="width: 300px; text-align: center;" />&nbsp;&nbsp;&nbsp;{{ C.ENDOWMENT }} EUR
                 
                 
                 <br>
               
+                {{ formfield_errors 'WTA' }}
             
             <br>
             <div class="chosen-price" id="chosenPrice" style="text-align: center;"> 0.00 EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre. </div>
@@ -272,7 +273,7 @@
             // Get the selected WTA value
             const selectedWTA = parseFloat(document.getElementById("wta").value);
             // Simulate the random assignment of a price
-            assignedPrice = Math.random() * 5; // Random number between 0 and 5
+            assignedPrice = Math.random() * 2; // Random number between 0 and 5
             // Show the assigned price on the webpage
             document.getElementById("assignedPriceText").innerText = `Sie haben angegeben, gegen eine Zahlung von ${selectedWTA.toFixed(2)},- EUR bereit zu sein, sich mit Ihrem Google Account anzumelden. Vielen Dank für diese Angabe. Der Preis für die Anmeldung wurde zufällig bestimmt. Er beträgt ${assignedPrice.toFixed(2)} EUR. Der ausgeloste Preis liegt unter der von Ihnen angegebenen Bereitschaft. Sie können jetzt mit der Umfrage fortfahren. `;
             // Compare the random price with the selected WTA

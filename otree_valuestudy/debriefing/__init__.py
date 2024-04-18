@@ -103,6 +103,11 @@ class cookie_survey2(Page):
     form_model = 'player'
     form_fields = ['question37', 'question38', 'question39']
 
+    def vars_for_template(self):
+        return {
+            'cookie_choice': self.player.participant.cookie_choice
+        }
+
 
 class debriefing (Page):
     form_model = 'player'
