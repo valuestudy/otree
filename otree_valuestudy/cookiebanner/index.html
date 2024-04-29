@@ -67,7 +67,7 @@
       <p class="cookie-text design4-cookie-text" style="display: none;">
         Um Ihr Nutzungserlebnis zu verbessern, verwendet diese Website Cookies. Dabei werden unterschiedliche Arten von Cookies verwendet, um Ihr Erlebnis auf dieser Website zu verbessern. Dazu gehören solche Cookies, die für den Betrieb dieser Website technisch erforderlich sind. Zudem werden Cookies verwendet, die für statistische Zwecke genutzt werden, Ihren Komfort auf dieser Website erhöhen oder zur Erstellung zielgerichteter Werbeangebote genutzt werden. 
         Sie können in den <a href="javascript:void(0);"  class="grey-link" onclick="showManageCookies()">Einstellungen</a> wählen, welche dieser Cookies verwendet werden sollen. 
-        Die Platzierung nicht essenzieller Cookies können Sie <a href="javascript:void(0);" id="decline-all-cookies-design4" class="grey-link" onclick="declineAllCookies()">ablehnen</a>.<br>
+        Die Platzierung nicht essenzieller Cookies können Sie <a href="javascript:void(0);" id="decline-all-cookies" class="grey-link" onclick="declineAllCookies()">ablehnen</a>.<br>
         
       <br>
       </p>
@@ -207,14 +207,39 @@
         document.getElementById("cookieContent").style.display = "block";
         document.getElementById("manageCookiesContent").style.display = "none";
       }
+
+      function designbanner1() {
+        console.log("design1");
+        liveSend('design1');
+      }
+
+      function designbanner2() {
+        console.log("design2");
+        liveSend('design2');
+      }
+      
+
+      function designbanner3() {
+        console.log("design3");
+        liveSend('design3');
+      }
+      
+
+      function designbanner4() {
+        console.log("design4");
+        liveSend('design4');
+      }
+      
       
       document.getElementById("zurueckButton").addEventListener("click", showCookieContent);
+
       
       function setRandomDesign() {
         const designs = ["design1", "design2", "design3", "design4"];
         const randomDesign = designs[Math.floor(Math.random() * designs.length)];
-      
         const cookieBanner = document.getElementById("cookieBanner");
+
+       
       
         // Remove all design classes
         cookieBanner.classList.remove(...designs);
@@ -232,6 +257,8 @@
       
         // Show text element for design4 if selected
         if (randomDesign === "design4") {
+          
+
           const design4Text = document.querySelector(".design4-cookie-text");
           design4Text.style.display = "block";
           // Hide the .cookie-text for design4
@@ -239,10 +266,18 @@
           baselineText.style.display = "none";
           // Hide the decline-all-cookies button for design4
           document.getElementById("decline-all-cookies").style.display = "none";
+          
+  
+          document.addEventListener("DOMContentLoaded", (event) => {
+                liveSend('design4');
+              });
+
+
         } else {
           // Show the .cookie-text for designs 1-3
           const baselineText = document.querySelector(".cookie-text");
           baselineText.style.display = "block";
+
           // Show/hide the decline-all-cookies button for designs 1-3
           if (randomDesign === "design2") {
             document.getElementById("decline-all-cookies").style.display = "none";
@@ -253,6 +288,10 @@
       
         // Show/hide the cookie settings section based on the selected design
         if (randomDesign === "design1") {
+          document.addEventListener("DOMContentLoaded", (event) => {
+                liveSend('design1');
+              });
+
           document.querySelector(".design1-cookie-setting").style.display = "block";
         } else {
           document.querySelector(".design1-cookie-setting").style.display = "none";
@@ -260,6 +299,7 @@
       
         // Show the cookie-setting section for designs 2-4
         if (randomDesign !== "design1") {
+          
           document.querySelector(".cookie-setting").style.display = "block";
         }
 
@@ -269,10 +309,21 @@
         }
         
         if (randomDesign === "design2") {
+          document.addEventListener("DOMContentLoaded", (event) => {
+                liveSend('design2');
+              });
               document.getElementById("custom-button-design2").style.display = "block";
             } else {
               document.getElementById("custom-button-design2").style.display = "none";
             }
+
+
+        if (randomDesign === "design3") {
+          document.addEventListener("DOMContentLoaded", (event) => {
+                liveSend('design3');
+              });  // Call designbanner3() function for Design 3
+        }
+          
       }
       
       // Call the function to set a random design of the cookie banner
@@ -310,9 +361,7 @@
             </p>
           
           
-            <input name = "cookie_choice" value="all-accepted" type="button" id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren
-            <input type="hidden" id="buttonClicked" name="button_clicked" value="false">
-
+            
             
           </div>
         </div>

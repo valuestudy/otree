@@ -22,6 +22,20 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
+    
+    banner_design = models.StringField(
+        label="Bitte wählen sie aus ob sie Cookies akzeptieren oder ablehnen wollen.",
+        choices=[
+            ["design1", "1"],
+            ["design2", "2"],
+            ["design3", "3"],
+            ["design4", "4"]
+        ],
+
+        blank=True,
+    
+    )
+
     cookie_choice = models.StringField(
         label="Bitte wählen sie aus ob sie Cookies akzeptieren oder ablehnen wollen.",
         choices=[
@@ -75,22 +89,16 @@ class Player(BasePlayer):
 class Index(Page):
 
     form_model = 'player'
-    form_fields = [ 'cookie_choice', 'cookie_choice_settings', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
+    form_fields = [ 'banner_design', 'cookie_choice', 'cookie_choice_settings', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
 
-    @staticmethod
-    def vars_for_template(self):
-        return {}
+  
     
     @staticmethod
-    def live_method(player: Player, data): #as it is not possible to send data via a button without submitting the form, the live method is used which sends data directly to the server on a click
-        if data == 'all-accepted':
-            player.cookie_choice = 'all-accepted'
-        if data == 'all-declined':
-            player.cookie_choice = 'all-declined'
-        if data == 'all-accepted-settings':
-            player.cookie_choice = 'all-accepted-settings'
-        if data == 'apply-settings':
-            player.cookie_choice = 'apply-settings'
+    def live_method(player: Player, data):
+        if data in ['design1', 'design2', 'design3', 'design4']:
+            player.banner_design = data
+        elif data in ['all-accepted', 'all-declined', 'all-accepted-settings', 'apply-settings']:
+            player.cookie_choice = data
 
 
 
