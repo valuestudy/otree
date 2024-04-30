@@ -144,6 +144,50 @@
         background-color: #303030;
         opacity: 8%;
       }
+
+
+      
+
+        /* Slider specific */
+        input[type="range"] {
+          /* Default background color */
+          background-color: #d3d3d3;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+          background: linear-gradient(to right, #d3d3d3 0%, #d3d3d3 70%, #af4c4c, #af4c4c 100%);
+        }
+
+        /* Additional styling for Mozilla Firefox */
+        input[type="range"]::-moz-range-track {
+          background: linear-gradient(to right, #d3d3d3 0%, #d3d3d3 70%, #af4c4c 70%, #af4c4c 100%);
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+          /* Style for the slider thumb */
+          background-color: #af4c4c; /* Green color */
+        }
+
+        /* Additional styling for Mozilla Firefox */
+        input[type="range"]::-moz-range-thumb {
+          background-color: #af4c4c; /* Green color */
+        }
+
+
+          /* datalist beneath slider */
+        datalist {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        option {
+          padding: 0;
+        }
+
+        input[type="range"] {
+          width: 200px;
+          margin: 0;
+        }
     </style>
 
     <script>
@@ -169,6 +213,7 @@
         }
       </script>
   
+        
   {% block scripts %}
   <!-- Add Firebase SDK Scripts with defer attribute -->
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
@@ -211,15 +256,28 @@
 
             <br>
              
-                0 EUR&nbsp;&nbsp;&nbsp;<input type="range" id="wta" name="WTA" min="0" max="{{ C.ENDOWMENT }}" step="0.01" value="1.5" style="width: 300px; text-align: center;" />&nbsp;&nbsp;&nbsp;{{ C.ENDOWMENT }} EUR
+                <input type="range" id="wta" name="WTA" list="wta_values" min="0" max="{{ C.ENDOWMENT }}" step="0.01" value="1.5" style="width: 300px; text-align: center;" />
                 
-                
+                <datalist style="padding: 0" id="wta_values">
+                  <option value="0" label="0€">
+                  <option value="0.5" label=""></option>
+                  <option value="1" label="1€">
+                  <option value="1.5" label="">
+                  <option value="2" label="2 €">
+                </datalist>
                 <br>
               
                 {{ formfield_errors 'WTA' }}
+
+                <button id="submitButton" disabled onclick="submitValue()">Submit</button>
+
+
             
             <br>
-            <div class="chosen-price" id="chosenPrice" style="text-align: center;"> 0.00 EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre. </div>
+            <div class="chosen-price" id="chosenPrice" style="text-align: center;"> 0.00 EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre.
+            
+            <br><br>
+          </div>
   
               <button id="simulateButton" type="button" style="width: 200px; text-align: center; margin-top: 20px;" onclick="simulateExperiment()">Bestätigen</button>
                   <!-- Add this element to display the assigned price as text on the website -->
@@ -311,7 +369,10 @@
           // Redirect to the survey page (replace "survey.html" with the actual page URL)
          // window.location.href = "survey_preferences.html";
       }
+
+
       
+
     </script>
     
     

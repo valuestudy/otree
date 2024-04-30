@@ -57,6 +57,9 @@ class Player(BasePlayer):
 class WTA_abfrage(Page):
     pass
 
+class WTA_abfrage1(Page):
+    pass
+
 class WTA_abfrage2(Page):
 
     form_model = 'player'
@@ -75,4 +78,4 @@ class WTA_abfrage2(Page):
 
 
 
-page_sequence = [WTA_abfrage, WTA_abfrage2]
+page_sequence = [WTA_abfrage, WTA_abfrage1, WTA_abfrage2]
