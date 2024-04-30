@@ -22,7 +22,16 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
+    consent = models.BooleanField(
+        label="Ich akzeptiere die Teilnahme und Datenschutzbestimmungen und bin mit der beschriebenen Datenverarbeitung einverstanden. ",
+        choices=[
+            [True, "Ja"],
+            [False, "Nein"],
+        ],
+
     
+    )
+
     banner_design = models.StringField(
         label="Bitte wählen sie aus ob sie Cookies akzeptieren oder ablehnen wollen.",
         choices=[
@@ -89,7 +98,7 @@ class Player(BasePlayer):
 class Index(Page):
 
     form_model = 'player'
-    form_fields = [ 'banner_design', 'cookie_choice', 'cookie_choice_settings', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
+    form_fields = [ 'consent', 'banner_design', 'cookie_choice', 'cookie_choice_settings', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
 
   
     

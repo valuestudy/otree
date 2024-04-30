@@ -348,13 +348,11 @@
       <div class="banner-table flex-column" style="background-color: rgb(255, 225, 0);">
         <div class="flex-row" >
           <div class="flex-item flex-column" style="background-color: rgb(255, 225, 0);">
-          <h2 class="add-top-margin-small">Vielen Dank für Ihre Teilnahme an unserer Studie!</h2>
+          <h2 style="margin-top: 20px;" class="add-top-margin-small">Herzlich Willkommen zu unserer Studie!</h2>
           <br>
-          <p class="text" style="margin-top: 20px;">
+          <p class="text" style="margin-top: 40px;">
             
-            
-            Herzlich Willkommen zu unserer Studie, <br><br><br>
-            vielen Dank, dass Sie sich heute die Zeit genommen haben an unserer Studie teilzunehmen. <br>
+            Vielen Dank, dass Sie sich heute die Zeit genommen haben an unserer Studie teilzunehmen. <br>
             Mit dieser Studie wollen wir einen Einblick in die Präferenzen und das Verhalten und von Menschen in digitalen Entscheidungskontexten erhalten. Die Studie besteht aus einem Fragebogen und zwei experimentellen Teilen. Innerhalb des Fragebogens stellen wir Ihnen einige Fragen zu Ihrer Person sowie zu Ihrem Verhalten, Ihren Vorlieben, Ihren Kenntnissen und Ihren Meinungen im Umgang mit digitalen Medien, insbesondere dem Internet. <br>
             Für die Beendigung der Studie erhalten Sie mindestens einen Betrag von […] EUR. Zudem können Sie in den beiden experimentellen Teilen zusätzliches Geld verdienen, sodass insgesamt eine Auszahlung von bis zu […] EUR möglich ist. In den experimentellen Teilen hängt Ihre zusätzliche Auszahlung von Ihren Entscheidungen ab. Wie genau sich diese auf Ihre Auszahlung auswirken, erklären wir Ihnen jeweils unmittelbar vor den experimentellen Teilen. Die für Ihre Auszahlung relevanten Informationen fragen wir am Ende der Studie ab.  Die Teilnahme wird voraussichtlich [15-20] Minuten dauern. 
             <br><br>Die Teilnahme an dieser Studie ist nur möglich, <b>wenn Sie über einen Google Account / eine G-Mail Adresse </b>verfügen. <br>
@@ -364,28 +362,34 @@
             Falls Sie Rückfragen zu dieser Studie haben, melden Sie sich bitte per E-Mail an […]. Wir werden versuchen, Ihre Fragen so schnell es geht zu beantworten. 
             <br>
             <br>
-            O Ich akzeptiere die Teilnahme und Datenschutzbestimmungen und bin mit der beschriebenen Datenverarbeitung einverstanden.
-            [Studie beginnen]
-            Wenn Sie nicht an der Studie teilnehmen möchten, können Sie die Webseite jetzt verlassen. Es werden keine personenbezogenen Daten von Ihnen gespeichert.
-
-          
-          
+            <input type="checkbox" id="consent-checkbox" name="consent"> Ich akzeptiere die Teilnahme und Datenschutzbestimmungen und bin mit der beschriebenen Datenverarbeitung einverstanden.
+            
+                  {{ formfield_errors 'consent' }} 
+          <br>
             </p>
           
           
             
             
-          </div>
-        </div>
-      <button class="small-button">Studie beginnen</button>
+         
+        
+      <button style="margin-top: 20px;" class="small-button">Studie beginnen</button>
+        <p class="text" style="margin-top: 20px; margin-bottom: 20px;"> 
 
-      
+          <i>Wenn Sie nicht an der Studie teilnehmen möchten, können Sie die Webseite jetzt verlassen. Es werden keine personenbezogenen Daten von Ihnen gespeichert.</i>
+
+          
+        </p>
+      </div> </div>
       </div>
     </div>
   </div>
 
 
   <script>
+
+
+
     document.addEventListener("DOMContentLoaded", function() {
         var button = document.getElementById("accept-all-cookies");
         var buttonClickedInput = document.getElementById("buttonClicked");
