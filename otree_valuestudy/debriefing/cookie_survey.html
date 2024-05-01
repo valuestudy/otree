@@ -50,13 +50,39 @@
   {{ endblock }}
 {{ block content }}
 
+
+<style>
+  .do-not-show {
+      display: none;
+      align-items: center;
+      justify-content: center;
+  }
+</style>
+
+
+
+
+</script>
+
+
     <div class="content">
       <div class="content-table flex-column">
-        <div class="flex-row">
-            <div class="flex-item flex-column-survey">
                 <h2 id="Survey">Cookie-Banner Umfrage</h2><hr>
                 <p class="text">
-                    Bitte beantworten Sie folgende Fragen zu Ihrer Wahrnehmung des Cookie Banners. 
+                    Bitte beantworten Sie folgende Fragen zu Ihrer Wahrnehmung des Cookie Banners. Das folgende Design wurde Ihnen zu Beginn der Studie gezeigt:
+                    <br><br>
+                    <p id="banner_design">{{ participant.banner_design }} </p>
+
+                    
+                    <div id="design1_box" class="do-not-show">
+                      <img src="{% static 'img/design1.png' %}" id="design1_image" style="width: 300px; height: 400px;" ></div>
+                    <div id="design2_box" class="do-not-show">
+                      <img src="{% static 'img/design2.png' %}" id="design2_image" style="width: 300px; height: 400px;"></div>
+                    <div id="design3_box" class="do-not-show">
+                      <img src="{% static 'img/design3.png' %}" id="design3_image" style="width: 300px; height: 400px;" ></div>
+                    <div id="design4_box" class="do-not-show">
+                      <img src="{% static 'img/design4.png' %}" id="design4_image" style="width: 300px; height: 400px;"></div>
+
                   <br></p>
                <br>
 
@@ -92,6 +118,40 @@
 
 
     </div>
+
+    <script>
+
+      // Get the banner image depending on which choice user made in the beginning
+      
+  
+      
+      let bannerDesign = document.getElementById("banner_design");
+  
+      console.log(bannerDesign.innerHTML);
+      
+      document.addEventListener("DOMContentLoaded", function() {
+
+        console.log("DOMContentLoaded event fired");
+          
+        if (bannerDesign.innerHTML = "design1") {
+        console.log("Design 1 selected");
+        design1_box.classList.remove("do-not-show");
+        } else if (bannerDesign.innerHTML = "design2") {
+            console.log("Design 2 selected");
+            design2_box.classList.remove("do-not-show");
+        } else if (bannerDesign.innerHTML = "design3") {
+            console.log("Design 3 selected");
+            design3_box.classList.remove("do-not-show");
+        } else if (bannerDesign.innerHTML = "design4") {
+            console.log("Design 4 selected");
+            design4_box.classList.remove("do-not-show");
+        }
+      
+       console.log(design1_box.classList);
+  
+        });
+      
+  </script>
 
 </html>
 

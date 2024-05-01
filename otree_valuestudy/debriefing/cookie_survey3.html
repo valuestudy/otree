@@ -55,37 +55,16 @@
         <div class="flex-row">
             <div class="flex-item flex-column-survey">
                 <h2 id="Survey">Cookie-Banner Umfrage</h2><hr>
-                <p class="text">
-                  Zu Beginn der Studie haben Sie sich für folgende Cookieauswahl entschieden: <p id="cookie_choice">{{ participant.cookie_choice }} </p>
-                  <br>  </p>
+              
                <br>
 
-                <div class="custom-radio-group-survey add-top-margin"></div><table class="table"><tr>
-                  <th>Fragen</th>
-                  
-                  <th>Trifft überhaupt nicht zu</th>
-                  <th>Trifft eher nicht zu</th>
-                  <th>Neutral</th>
-                  <th>Trifft eher zu</th>
-                  <th>Trifft voll zu</th>
-                  
-              </tr>
               
-                  {{ for field in form }}
-                      <tr>
-                          <td>{{ field.label }}</td>
-                          {{ for choice in field }}
-                              <td>{{ choice }}</td>
-                          {{ endfor }}
-                      </tr>
-                  {{ endfor }}
-
-
-
-
-              </table>
             
-              
+              <div class="custom-survey add-top-margin add-bottom-margin">
+
+                {% formfield 'question40' %}
+
+              </div>
             
             </div>
 

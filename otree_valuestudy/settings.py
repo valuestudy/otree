@@ -7,7 +7,14 @@ SESSION_CONFIGS = [
 dict(
         name='cookiebanner', 
         display_name="The cookiebanner shown to participants",
-        app_sequence=['cookiebanner', 'WTA_abfrage', 'survey'], 
+        app_sequence=['cookiebanner', 'debriefing', 'WTA_abfrage', 'survey'], 
+        num_demo_participants=1
+    ),
+
+    dict(
+        name='debriefing', 
+        display_name="The last part of the survey.",
+        app_sequence=['debriefing'], 
         num_demo_participants=1
     ),
 
@@ -26,12 +33,7 @@ dict(
         num_demo_participants=1
     ),
 
-     dict(
-        name='debriefing', 
-        display_name="The last part of the survey.",
-        app_sequence=['debriefing'], 
-        num_demo_participants=1
-    ),
+     
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -43,7 +45,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
 )
 
-PARTICIPANT_FIELDS = ['cookie_choice']
+PARTICIPANT_FIELDS = ['cookie_choice',  'banner_design']
 SESSION_FIELDS = []
 
 # ISO-639 code

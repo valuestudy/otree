@@ -13,6 +13,9 @@ class C(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+
+    
+
     pass
 
 
@@ -41,7 +44,7 @@ class Player(BasePlayer):
             ["design4", "4"]
         ],
 
-        blank=True,
+        blank=True, initial=0,
     
     )
 
@@ -49,19 +52,15 @@ class Player(BasePlayer):
         label="Bitte wählen sie aus ob sie Cookies akzeptieren oder ablehnen wollen.",
         choices=[
             ["all-accepted", "Alle akzeptiert"],
-            ["all-declined", "Alle abgelehnt"]
+            ["all-declined", "Alle abgelehnt"],
+            ["apply-settings", "Einstellungen anwenden"],
         ],
-
+        initial="0",
         blank=True,
     
     )
 
-    cookie_choice_settings = models.StringField(
-        label="Bitte wählen sie aus ob sie Cookies akzeptieren oder ablehnen wollen.",
-        
-
-        blank=True,
-    )
+    
 
     cookie_analytics = models.BooleanField(
         label="Stimmen Sie den Analytischen Cookies zu?",
@@ -70,7 +69,7 @@ class Player(BasePlayer):
             [False, "Analytische Cookies abgelehnt"]
         ],
 
-        blank=True,
+        blank=True, initial=False,
     )
 
     cookie_marketing = models.BooleanField(
@@ -79,7 +78,7 @@ class Player(BasePlayer):
             [True, "Marketing Cookies zugestimmt"],
             [False, "Marketing Cookies abgelehnt"]
         ],
-        blank=True,
+        blank=True, initial=False,
     )
 
     cookie_comfort = models.BooleanField(
@@ -88,7 +87,7 @@ class Player(BasePlayer):
             [True, "Komfort Cookies zugestimmt"],
             [False, "Komfort Cookies abgelehnt"]
         ],
-        blank=True,
+        blank=True, initial=False,
     )
 
     
@@ -98,7 +97,7 @@ class Player(BasePlayer):
 class Index(Page):
 
     form_model = 'player'
-    form_fields = [ 'consent', 'banner_design', 'cookie_choice', 'cookie_choice_settings', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
+    form_fields = [ 'consent', 'banner_design', 'cookie_choice', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
 
   
     
@@ -108,6 +107,13 @@ class Index(Page):
             player.banner_design = data
         elif data in ['all-accepted', 'all-declined', 'all-accepted-settings', 'apply-settings']:
             player.cookie_choice = data
+
+    @staticmethod
+    def before_next_page(player, timeout_happened):
+        participant = player.participant 
+        participant.banner_design = player.banner_design
+        participant.cookie_choice = player.cookie_choice
+
 
 
 

@@ -85,6 +85,19 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
 
+    question40 = models.IntegerField(
+        label="Ich bin zufrieden mit meiner Cookieauswahl.",
+        choices= [
+            ('Preferred', 'Sie entspricht meinen Präferenzen'),
+            ('Unbewusst', 'Ich habe unbewusst agiert.'),
+            ('Tracked', 'Ich möchte gerne getrackt werden, etwa um personalisierte Werbungen zu erhalten.'),
+            ('Schnell', 'Ich wollte schnellstmöglich weiterkommen.'),
+            ('Egal', 'Es ist mir egal.  '),
+        ],
+
+        widget=widgets.RadioSelect,
+    )
+
     pass
 
 
@@ -103,11 +116,11 @@ class cookie_survey2(Page):
     form_model = 'player'
     form_fields = ['question37', 'question38', 'question39']
 
-    def vars_for_template(self):
-        return {
-            'cookie_choice': self.player.participant.cookie_choice
-        }
+class cookie_survey3(Page):
+    form_model = 'player'
+    form_fields = ['question40']
 
+    
 
 class debriefing (Page):
     form_model = 'player'
@@ -115,4 +128,4 @@ class debriefing (Page):
     pass
 
 
-page_sequence = [cookie_survey2, success, cookie_survey, debriefing ]
+page_sequence = [  success, cookie_survey,  cookie_survey2, cookie_survey3, debriefing   ]
