@@ -1,28 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+{{ block title }} 
 
-<head>
-  <title>Value Study</title>
+
+    <div class="menu" style="background-color:#ffffff;">
+    <div class="menu-table flex-row-space-between" style="border-bottom: 1px solid black; ">
+      <div class="logo flex-row-center">
+        <img src="{% static 'img/favicon.ico' %}" style="margin-right: 20px; 
+        max-width:50px;
+        max-height:40px;"><br>
+        
+        <a href="index.html">Value Study</a>
+      </div>
+      <a class="menu-button" tabindex="0" href="javascript:void(0)">
+        <img src="{% static 'img/menu.png' %}">
+      </a>
+      <div class="menu-items flex-row-center flex-item">
+        <a class="menu-embedding" href="">Overview</a>
+        <a class="menu-widget" href="">About us</a>
+        <a class="menu-embedding" target="_blank" href="{% static 'html/privacy.html' %}">Privacy</a>
+
+ 
+        
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/controls.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/frame.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/footer.js"></script>
-  <style>
-    .menu-index {
-      color: rgb(255, 255, 255) !important;
-      opacity: 1 !important;
-      font-weight: 700 !important;
-    }
-  </style>
-</head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{% static 'js/menu.js' %}"></script>
+  <script src="{% static 'js/footer.js' %}"></script>
+  <script src="{% static 'js/widgets.js' %}"></script>
+  <script src="{% static 'js/util.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  
+  {{ endblock }}
+{{ block content }}
+
 
 <body>
     <div class="menu-container"></div>
@@ -32,48 +55,38 @@
           <div class="flex-row">
 
 <body><div class="flex-row">
-    <h1>Privacy Policy</h1>
-    <p class="text add-top-margin">
     
-    Here you can find our privacy policy. 
-    In common with other websites, log files are stored on the web server saving details such as the visitor’s IP address, browser type, referring page and time of visit.
+  <h1>Datenschutzerklärung (Official German Version)</h1>
+    <p>Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als "Daten" bezeichnet) wir zu welchen Zwecken und in welchem Umfang verarbeiten.</p>
+    <p><strong>Stand:</strong> 29. April 2024</p>
 
-    Cookies may be used to remember visitor preferences when interacting with the website.
-    
-    Where registration is required, the visitor’s email and a username will be stored on the server.
-    
-    <h3>How the Information is used</h3>
-    
-    The information is used to enhance the vistor’s experience when using the website to display personalised content and possibly advertising.
-    
-    E-mail addresses will not be sold, rented or leased to 3rd parties.
-    
-    E-mail may be sent to inform you of news of our services or offers by us or our affiliates.
-    
-    
-    
-    If you have subscribed to one of our services, you may unsubscribe by following the instructions which are included in e-mail that you receive.
-    
-    You may be able to block cookies via your browser settings but this may prevent you from access to certain features of the website.
-    
-    <h3>Cookies </h3>
-    
-    Cookies are small digital signature files that are stored by your web browser that allow your preferences to be recorded when visiting the website. Also they may be used to track your return visits to the website.
-    
-    3rd party advertising companies may also use cookies for tracking purposes.
-    
-    <h3>Google Ads</h3>
-    
-    Google, as a third party vendor, uses cookies to serve ads.
-    
-    Google’s use of the DART cookie enables it to serve ads to visitors based on their visit to sites they visit on the Internet.
-    
-    Website visitors may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy.
-    
-</div>
+    <h2>A. Allgemeine Angaben</h2>
 
-</body>
+    <h3>I. Verantwortlicher und Datenschutzbeauftragte</h3>
+    <p>Der Verantwortliche im Sinne der Datenschutz-Grundverordnung und anderer nationaler Datenschutzgesetze der Mitgliedstaaten sowie sonstiger datenschutzrechtlicher Bestimmungen ist:</p>
+    <p>Alexander Egberts<br>
+        Max-Planck-Institut zur Erforschung von Gemeinschaftsgütern<br>
+        Kurt-Schumacher-Str. 10<br>
+        53113 Bonn<br>
+        E-Mail-Adresse: egberts@coll.mpg.de</p>
+    <p>Die zuständige Datenschutzbeauftragte des Max-Planck-Instituts zur Erforschung von Gemeinschaftsgütern kann erreicht werden unter: haveric@coll.mpg.de</p>
 
-<div class="footer-container"></div>
+    <h3>II. Allgemeines zur Datenverarbeitung</h3>
+    <p>Die Angaben, die Sie im Rahmen dieser Studie tätigen, werden vertraulich behandelt und nur für Forschungszwecke verwendet. Dafür werden durch die Beantwortung von Fragen forschungsrelevante und demografische Daten erhoben. Diese Daten sind anonym und bieten für sich genommen keine Möglichkeit, einzelne Daten mit einzelnen Teilnehmenden in Verbindung zu bringen. Die erhobenen Forschungsdaten werden anschließend in aggregierter Form durch das Projekt-Team des Max-Planck-Instituts zur Erforschung von Gemeinschaftsgütern und der Erasmus Universität Rotterdam wissenschaftlich ausgewertet und für die Mindestdauer von zehn Jahren aufbewahrt. Die gewonnenen Erkenntnisse werden für die Erstellung von wissenschaftlichen Arbeiten und Präsentationen genutzt. Diese Arbeiten werden veröffentlicht. Um die Transparenz in der Wissenschaft zu gewährleisten, können Daten, die keine Rückschlüsse auf einzelne Personen zulassen, zur Nachnutzung an Dritte weitergegeben werden. Zweck, Art und Umfang dieser Nachnutzung sind zum jetzigen Zeitpunkt nicht absehbar.</p>
+    <p>Darüber hinaus verarbeiten wir personenbezogene Daten unserer Nutzer grundsätzlich nur, soweit dies zur Bereitstellung einer funktionsfähigen Website erforderlich ist. Dabei handelt es sich um Nutzungsdaten, Kommunikations- und Verfahrensdaten sowie Protokolldaten.</p>
+    <!-- Add more content here as needed -->
 
-</html>
+    <h3>III. Allgemeines zu den Rechtsgrundlagen</h3>
+    <p>Maßgebliche Rechtsgrundlagen nach der DSGVO: Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten. Bitte nehmen Sie zur Kenntnis, dass neben den Regelungen der DSGVO nationale Datenschutzvorgaben in Ihrem bzw. unserem Wohn- oder Sitzland gelten können.</p>
+    <!-- Add more content here as needed -->
+
+    <h2>B. Datenschutzhinweise im Einzelnen</h2>
+
+    <h3>I. Bereitstellung der Website</h3>
+    <p>7. Beschreibung und Umfang der Datenverarbeitung</p>
+    <!-- Add more content here as needed -->
+
+
+
+
+{{ endblock }}
