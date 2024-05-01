@@ -50,15 +50,36 @@
   {{ endblock }}
 {{ block content }}
 
+<style>
+  .do-not-show {
+      display: none;
+      align-items: center;
+      justify-content: center;
+  }
+</style>
+
     <div class="content">
       <div class="content-table flex-column">
         <div class="flex-row">
             <div class="flex-item flex-column-survey">
                 <h2 id="Survey">Cookie-Banner Umfrage</h2><hr>
                 <p class="text">
-                  Zu Beginn der Studie haben Sie sich für folgende Cookieauswahl entschieden: <p id="cookie_choice">{{ participant.cookie_choice }} </p>
-                  <br>  </p>
-               <br>
+                  Zu Beginn der Studie haben Sie sich für folgende Cookieauswahl entschieden: 
+                  
+                  
+                  <p id="cookie_choice" style="display: none;"> {{ participant.cookie_choice }} </p>
+                  
+
+                  <div id="all_accepted_box" class="do-not-show">
+                    <b>Alle Cookies akzeptieren.</b></div>
+
+                  <div id="all_declined_box" class="do-not-show">
+                    <b>Nicht-essenzielle Cookies ablehnen.</b></div>
+
+                  <div id="apply_settings_box" class="do-not-show">
+                      <b>Einstellungen angewendet.</b></div>
+                </p>
+              
 
                 <div class="custom-radio-group-survey add-top-margin"></div><table class="table"><tr>
                   <th>Fragen</th>
@@ -99,6 +120,33 @@
 
 </html>
 
+
+<script>
+
+  // Get the banner image depending on which choice user made in the beginning
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOMContentLoaded event fired");
+
+    console.log("Cookie choice:", cookie_choice.innerHTML.trim());
+
+    if (cookie_choice.innerHTML.trim() === "all-accepted") {
+        console.log("all accepted selected");
+        if (all_accepted_box) all_accepted_box.classList.remove("do-not-show");
+    } else if (cookie_choice.innerHTML.trim() === "all-declined") {
+        console.log("all declined selected");
+        if (all_declined_box) all_declined_box.classList.remove("do-not-show");
+    } else if (cookie_choice.innerHTML.trim() === "apply-settings") {
+        console.log("apply settings selected");
+        if (apply_settings_box) apply_settings_box.classList.remove("do-not-show");
+    } else {
+        console.log("No matching choice found");
+    }
+});
+
+
+
+</script>
 
 {{ next_button }}
 

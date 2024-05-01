@@ -62,11 +62,18 @@
     }
 
     img {
-        max-width: 40%; /* Make the image responsive */
+        max-width: 100%; /* Make the image responsive */
         height: auto; /* Maintain the image's aspect ratio */
         margin: 0 auto; /* Center the image horizontally */
         display: block; /* Remove extra spacing below the image */
     }
+
+   
+  .do-not-show {
+      display: none;
+      align-items: center;
+      justify-content: center;
+  }
     
   </style>
 </head>
@@ -87,11 +94,25 @@
             <br><br>
             <p class="text" style="margin-top: 20px;">
             Zu Beginn Ihres Besuches dieser Website wurden Sie mit der Frage konfrontiert, ob Sie der Speicherung von Cookies auf Ihrem Gerät zustimmen. Cookies sind kleine Textdateien, die im Browser Ihres Endgerätes gespeichert werden. Webseiten können Ihr Endgerät anhand dieser Textdateien wiedererkennen. Dies ermöglicht viele nützliche und notwendige Funktionen innerhalb einer Website. 
-            Cookies können jedoch auch genutzt werden, um Ihr Nutzungsverhalten über mehrere Webseiten hinweg zu beobachten, zu analysieren und damit (beispielsweise) personalisierte Werbung für Sie zu schalten. In diesem Fall spricht man von Drittanbieter Cookies („Third Party Cookies“). Mit diesen Cookies können Informationen über Sie gewonnen werden, daher benötigt die Website eine (datenschutzrechtliche) Einwilligung von Ihnen, um solche Cookies installieren zu dürfen.
-            In der Regel werden diese Einwilligungen von Webseiten mittels sogenannter Cookie Banner eingeholt.  Unten sehen Sie eine Abbildung des Cookie Banners, der Ihnen am Anfang Ihres Besuches auf dieser Website angezeigt wurde. Unabhängig von Ihrer Angabe haben wir tatsächlich keine Drittanbieter Cookies in Ihrem Browser gespeichert.
+            Cookies können jedoch auch genutzt werden, um Ihr Nutzungsverhalten über mehrere Webseiten hinweg zu beobachten, zu analysieren und damit (beispielsweise) personalisierte Werbung für Sie zu schalten. In diesem Fall spricht man von Drittanbieter Cookies („Third Party Cookies“).
+            <br><br> Mit diesen Cookies können Informationen über Sie gewonnen werden, daher benötigt die Website eine (datenschutzrechtliche) Einwilligung von Ihnen, um solche Cookies installieren zu dürfen.
+            In der Regel werden diese Einwilligungen von Webseiten mittels sogenannter Cookie Banner eingeholt.  Unten sehen Sie eine Abbildung des Cookie Banners, der Ihnen am Anfang Ihres Besuches auf dieser Website angezeigt wurde.<br><br> Unabhängig von Ihrer Angabe haben wir tatsächlich keine Drittanbieter Cookies in Ihrem Browser gespeichert.
             <br><br>
-            <img src="{% static 'img/cookie_banner.png' %}" alt="Cookie banner without dark pattern">
 
+
+            <p id="banner_design">{{ participant.banner_design }} </p>
+
+                    
+                    <div id="design1_box" class="do-not-show">
+                      <img src="{% static 'img/design1.png' %}" id="design1_image" style="width: 300px; height: 400px;" ></div>
+                    <div id="design2_box" class="do-not-show">
+                      <img src="{% static 'img/design2.png' %}" id="design2_image" style="width: 300px; height: 400px;"></div>
+                    <div id="design3_box" class="do-not-show">
+                      <img src="{% static 'img/design3.png' %}" id="design3_image" style="width: 300px; height: 400px;" ></div>
+                    <div id="design4_box" class="do-not-show">
+                      <img src="{% static 'img/design4.png' %}" id="design4_image" style="width: 300px; height: 400px;"></div>
+
+                  <br></p>
             <br></p>
             <p style="text-align: center,">Wir möchten Ihnen im Nachgang gerne einige Fragen zu diesem Cookie Banner stellen.</p>
             
@@ -112,4 +133,38 @@
             </p>
           </div>
         </div>
+
+
+        <script>
+
+          // Get the banner image depending on which choice user made in the beginning
+          
+      
+          let bannerDesign = document.getElementById("banner_design");
+
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log("DOMContentLoaded event fired");
+
+                console.log("Banner Design: ", bannerDesign.innerHTML.trim());
+
+                if (bannerDesign.innerHTML.trim() === "design1") {
+                    console.log("Design 1 selected");
+                    if (design1_box) design1_box.classList.remove("do-not-show");
+                } else if (bannerDesign.innerHTML.trim() === "design2") {
+                    console.log("Design 2 selected");
+                    if (design2_box) design2_box.classList.remove("do-not-show");
+                } else if (bannerDesign.innerHTML.trim() === "design3") {
+                    console.log("Design 3 selected");
+                    if (design3_box) design3_box.classList.remove("do-not-show");
+                } else if (bannerDesign.innerHTML.trim() === "design4") {
+                    console.log("Design 4 selected");
+                    if (design4_box) design4_box.classList.remove("do-not-show");
+                } else {
+                    console.log("No matching design found");
+                }
+            });
+          
+      </script>
+
+
         {{ endblock }}

@@ -61,17 +61,13 @@
 
 
 
-
-</script>
-
-
     <div class="content">
       <div class="content-table flex-column">
                 <h2 id="Survey">Cookie-Banner Umfrage</h2><hr>
                 <p class="text">
                     Bitte beantworten Sie folgende Fragen zu Ihrer Wahrnehmung des Cookie Banners. Das folgende Design wurde Ihnen zu Beginn der Studie gezeigt:
                     <br><br>
-                    <p id="banner_design">{{ participant.banner_design }} </p>
+                    <p id="banner_design" style="display: none;">{{ participant.banner_design }} </p>
 
                     
                     <div id="design1_box" class="do-not-show">
@@ -89,11 +85,11 @@
                 <div class="custom-radio-group-survey add-top-margin"></div><table class="table"><tr>
                   <th>Fragen</th>
                   
-                  <th>Stimme gar nicht zu</th>
-                  <th>Stimme eher nicht zu</th>
+                  <th>Trifft überhaupt nicht zu</th>
+                  <th>Trifft eher nicht zu</th>
                   <th>Neutral</th>
-                  <th>Stimme eher zu</th>
-                  <th>Stimme voll zu</th>
+                  <th>Trifft eher zu</th>
+                  <th>Trifft voll zu</th>
                   
               </tr>
               
@@ -122,34 +118,29 @@
     <script>
 
       // Get the banner image depending on which choice user made in the beginning
-      
-  
-      
       let bannerDesign = document.getElementById("banner_design");
-  
-      console.log(bannerDesign.innerHTML);
-      
-      document.addEventListener("DOMContentLoaded", function() {
 
-        console.log("DOMContentLoaded event fired");
-          
-        if (bannerDesign.innerHTML = "design1") {
+    document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOMContentLoaded event fired");
+
+    console.log("Banner Design: ", bannerDesign.innerHTML.trim());
+
+    if (bannerDesign.innerHTML.trim() === "design1") {
         console.log("Design 1 selected");
-        design1_box.classList.remove("do-not-show");
-        } else if (bannerDesign.innerHTML = "design2") {
-            console.log("Design 2 selected");
-            design2_box.classList.remove("do-not-show");
-        } else if (bannerDesign.innerHTML = "design3") {
-            console.log("Design 3 selected");
-            design3_box.classList.remove("do-not-show");
-        } else if (bannerDesign.innerHTML = "design4") {
-            console.log("Design 4 selected");
-            design4_box.classList.remove("do-not-show");
-        }
-      
-       console.log(design1_box.classList);
-  
-        });
+        if (design1_box) design1_box.classList.remove("do-not-show");
+    } else if (bannerDesign.innerHTML.trim() === "design2") {
+        console.log("Design 2 selected");
+        if (design2_box) design2_box.classList.remove("do-not-show");
+    } else if (bannerDesign.innerHTML.trim() === "design3") {
+        console.log("Design 3 selected");
+        if (design3_box) design3_box.classList.remove("do-not-show");
+    } else if (bannerDesign.innerHTML.trim() === "design4") {
+        console.log("Design 4 selected");
+        if (design4_box) design4_box.classList.remove("do-not-show");
+    } else {
+        console.log("No matching design found");
+    }
+});
       
   </script>
 

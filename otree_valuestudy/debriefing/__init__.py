@@ -85,8 +85,8 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
 
-    question40 = models.IntegerField(
-        label="Ich bin zufrieden mit meiner Cookieauswahl.",
+    question40 = models.StringField(
+        label="<b>Warum haben Sie diese Cookie Auswahl getroffen? </b> ",
         choices= [
             ('Preferred', 'Sie entspricht meinen Präferenzen'),
             ('Unbewusst', 'Ich habe unbewusst agiert.'),
