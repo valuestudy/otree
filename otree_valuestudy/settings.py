@@ -4,19 +4,16 @@ from os import environ
 
 SESSION_CONFIGS = [
     
+
+
 dict(
         name='cookiebanner', 
         display_name="The cookiebanner shown to participants",
-        app_sequence=['cookiebanner', 'debriefing', 'WTA_abfrage', 'survey'], 
+        app_sequence=['cookiebanner', 'WTA_abfrage',  'survey', 'paternalism', 'debriefing', ], 
         num_demo_participants=1
     ),
 
-    dict(
-        name='debriefing', 
-        display_name="The last part of the survey.",
-        app_sequence=['debriefing'], 
-        num_demo_participants=1
-    ),
+    
 
     dict(
         name='WTA_abfrage', 
@@ -30,6 +27,21 @@ dict(
         name='survey', 
         display_name="The survey about internet usage for participants",
         app_sequence=['survey'], 
+        num_demo_participants=1
+    ),
+
+    
+    dict(
+            name='paternalism', 
+            display_name="Survey regarding Paternalism",
+            app_sequence=['paternalism'], 
+            num_demo_participants=1
+        ),
+
+    dict(
+        name='debriefing', 
+        display_name="The last part of the survey.",
+        app_sequence=['debriefing'], 
         num_demo_participants=1
     ),
 
