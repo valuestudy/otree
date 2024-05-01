@@ -148,19 +148,13 @@
 
       
 
-        /* Slider specific */
-        input[type="range"] {
-          /* Default background color */
-          background-color: #d3d3d3;
-        }
-
         input[type="range"]::-webkit-slider-runnable-track {
-          background: linear-gradient(to right, #d3d3d3 0%, #d3d3d3 70%, #af4c4c, #af4c4c 100%);
+          background: linear-gradient(to right, #d3d3d3 0%, #d3d3d3 90%, #af4c4c, #af4c4c 100%);
         }
 
         /* Additional styling for Mozilla Firefox */
         input[type="range"]::-moz-range-track {
-          background: linear-gradient(to right, #d3d3d3 0%, #d3d3d3 70%, #af4c4c 70%, #af4c4c 100%);
+          background: linear-gradient(to right, #d3d3d3 0%, #d3d3d3 95%, #af4c4c 95%, #af4c4c 100%);
         }
 
         input[type="range"]::-webkit-slider-thumb {
@@ -235,8 +229,13 @@
               // Function to update the chosen price
               function updateSliderValue() {
                 const sliderValue = parseFloat(slider.value);
-                chosenPriceElement.textContent = `${sliderValue.toFixed(2)} EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre. `;
+                  if (sliderValue <= 2) {
+                      chosenPriceElement.textContent = `${sliderValue.toFixed(2)} EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre. `;
+                  } else {
+                      chosenPriceElement.textContent = `über 2 EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre?`;
+                  }
               }
+    
               // Add an event listener for the input event on the slider
               slider.addEventListener("input", updateSliderValue);
               // Initial update
@@ -249,6 +248,11 @@
 <div class="content">
     <div class="content-table flex-column">
               <br>
+
+
+
+
+
             <h2>Angabe Ihrer Zahlungsbereitschaft </h2>
             <br>
             <br>
@@ -256,7 +260,7 @@
 
             <br>
              
-                <input type="range" id="wta" name="WTA" list="wta_values" min="0" max="{{ C.ENDOWMENT }}" step="0.01" value="1.5" style="width: 300px; text-align: center;" />
+                <input type="range" id="wta" name="WTA" list="wta_values" min="0" max="2.10" step="0.01" value="1.5" style="width: 300px; text-align: center;" />
                 
                 <datalist style="padding: 0" id="wta_values">
                   <option value="0" label="0€">
@@ -265,6 +269,9 @@
                   <option value="1.5" label="">
                   <option value="2" label="2 €">
                 </datalist>
+                <br>
+
+                
                 <br>
               
                 {{ formfield_errors 'WTA' }}
@@ -275,8 +282,19 @@
             
             <br>
             <div class="chosen-price" id="chosenPrice" style="text-align: center;"> 0.00 EUR bereit, mich mit meinem Google Konto ein zu loggen, bevor ich mit der Umfrage fortfahre.
+            </div>
+            <br>
+            <br>
+            <div id="extraField" style="display: none;"> 
+                 
+              Ich wäre für den folgenden Betrag bereit, mich mit meinem Google Konto einzuloggen:
+              <input type="text" name='desired_amount' id="extraInput" placeholder="Ihr Betrag in €">
+              <br>
+              {{ formfield_errors 'desired_amount' }}
+
+
             
-            <br><br>
+            <br>
           </div>
   
               <button id="simulateButton" type="button" style="width: 200px; text-align: center; margin-top: 20px;" onclick="simulateExperiment()">Bestätigen</button>
@@ -321,6 +339,21 @@
 
     
     <script>
+
+    const slider = document.getElementById("wta");
+    const extraField = document.getElementById("extraField");
+
+    slider.addEventListener("input", function() {
+      if (parseFloat(this.value) > 2.00) { // Change this value as per your requirement
+        extraField.style.display = "block";
+          document.getElementById("simulateButton").style.display = "none"; // Hide the Bestätigen button
+        } else {
+          extraField.style.display = "none";
+          document.getElementById("simulateButton").style.display = "block"; // Show the Bestätigen button
+        }
+
+    });
+
       let assignedPrice;
       let experimentConducted = false;
       function simulateExperiment() {
@@ -332,7 +365,7 @@
             // Get the selected WTA value
             const selectedWTA = parseFloat(document.getElementById("wta").value);
             // Simulate the random assignment of a price
-            assignedPrice = Math.random() * 2; // Random number between 0 and 5
+            assignedPrice = Math.random() * 2; // Random number between 0 and 2
             // Show the assigned price on the webpage
             document.getElementById("assignedPriceText").innerText = `Sie haben angegeben, gegen eine Zahlung von ${selectedWTA.toFixed(2)},- EUR bereit zu sein, sich mit Ihrem Google Account anzumelden. Vielen Dank für diese Angabe. Der Preis für die Anmeldung wurde zufällig bestimmt. Er beträgt ${assignedPrice.toFixed(2)} EUR. Der ausgeloste Preis liegt unter der von Ihnen angegebenen Bereitschaft. Sie können jetzt mit der Umfrage fortfahren. `;
             // Compare the random price with the selected WTA
@@ -373,7 +406,24 @@
 
 
       
+      // Function to update the visibility of the Weiter button in case participant has a higher WTA than 2 EUR
+          function updateVisibility() {
+          const desiredAmountField = document.getElementById("extraInput");
+          const weiterButton = document.getElementById("weiterButton");
+          const bestatigenButton = document.getElementById("simulateButton");
+          
+          // Check if the desired amount field has a value
+          if (desiredAmountField.value.trim() !== "") {
+              weiterButton.style.display = "block"; // Show the Weiter button
+              bestatigenButton.style.display = "none"; // Hide the Bestätigen button
+          } else {
+              weiterButton.style.display = "none"; // Hide the Weiter button
+              bestatigenButton.style.display = "block"; // Show the Bestätigen button
+          }
+      }
 
+      // Add an event listener to the desired_amount field to detect changes
+      document.getElementById("extraInput").addEventListener("input", updateVisibility);
     </script>
     
     

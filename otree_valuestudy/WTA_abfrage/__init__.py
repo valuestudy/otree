@@ -27,7 +27,8 @@ class Player(BasePlayer):
     # Define the question
 
     WTA = models.FloatField(
-        min=0, max=C.ENDOWMENT, label="How much do you want to give?"
+        min=0,  label="How much do you want to give?",
+        blank=True
     )
 
     login_option = models.StringField(
@@ -40,9 +41,9 @@ class Player(BasePlayer):
     widget=widgets.RadioSelect
     )
 
-    amount = models.FloatField(
+    desired_amount = models.FloatField(
         label="Ich wäre für den folgenden Betrag bereit, mich mit meinem Google Konto einzuloggen:",
-        min=5,
+        min=2,
         blank=True
     )
     # Your other page code...
@@ -63,7 +64,7 @@ class WTA_abfrage1(Page):
 class WTA_abfrage2(Page):
 
     form_model = 'player'
-    form_fields = ['WTA']
+    form_fields = ['WTA', 'desired_amount']
     @staticmethod
     def js_vars(player: Player):
         return dict(endowment=C.ENDOWMENT)
