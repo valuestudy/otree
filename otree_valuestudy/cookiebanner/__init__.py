@@ -90,6 +90,35 @@ class Player(BasePlayer):
         blank=True, initial=False,
     )
 
+    education = models.StringField(
+        label="Was ist Ihr höchster Bildungsabschluss?",
+        choices=[
+            ('NoDegree', 'Kein Abschluss'),
+            ('MittlereReife', 'Mittlere Reife'),
+            ('Abitur', 'Abitur'),
+            ('University', 'Bachelor'),
+            ('Master', 'Master'),
+            ('Promotion', 'Promotion'),
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    age = models.IntegerField(
+        label='What is your age?', min=13, max=125
+        )
+
+    gender = models.StringField(
+        label="Geschlecht",
+        choices=[
+            ('männlich', 'männlich'),
+            ('weiblich', 'weiblich'),
+            ('divers', 'divers'),
+            ('NA', 'möchte ich nicht angeben'),
+        ],
+        widget=widgets.RadioSelect,
+        blank=True,
+    )
+
     
 
 
@@ -99,7 +128,7 @@ class Index(Page):
     form_model = 'player'
     form_fields = [ 'consent', 'banner_design', 'cookie_choice', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
 
-  
+
     
     @staticmethod
     def live_method(player: Player, data):
@@ -114,7 +143,10 @@ class Index(Page):
         participant.banner_design = player.banner_design
         participant.cookie_choice = player.cookie_choice
 
+class Demographics(Page):
+    form_model = 'player'
+    form_fields = ['education', 'age', 'gender']
 
 
 
-page_sequence = [Index]
+page_sequence = [Index, Demographics]
