@@ -102,6 +102,19 @@ class Player(BasePlayer):
             widget=widgets.RadioSelectHorizontal,
         )
 
+        paternalism_choice= models.StringField(
+            label="Bitte waehlen Sie nun eine der drei Optionen",
+            choices=[
+                ['Staat', 'Ich moechte, dass der Staat fuer mich entscheidet, welche der beiden Massnahmen ergriffen wird'],
+                ['Ich', 'Ich entscheide ohne Zusatzinformation, welche der beiden Massnahmen ergriffen wird'],
+                ['Zusatzinfo', 'Ich entscheide mit Zusatzinformation, welche der beiden Massnahmen ergriffen wird. Die kostenpflichtige Zusatzinformation erhalten Sie auf der naechsten Seite.']
+            ],
+            widget=widgets.RadioSelectHorizontal,
+
+
+        )
+
+
 
 # FUNCTIONS
 
@@ -116,7 +129,13 @@ class Paternalism_survey2(Page):
     form_model = 'player'
     form_fields = ['frage7', 'frage8r','frage9', 'frage10r', 'frage11r']
 
+class Paternalism_experiment(Page):
+    pass
+
+class Paternalism_experiment2(Page):
+    form_model = 'player'
+    form_fields = ['paternalism_choice']
 
 
-page_sequence = [ Paternalism_survey, Paternalism_survey2
+page_sequence = [ Paternalism_experiment, Paternalism_experiment2, Paternalism_survey, Paternalism_survey2, 
                         ]
