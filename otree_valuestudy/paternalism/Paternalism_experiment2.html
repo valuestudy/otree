@@ -60,21 +60,49 @@
 
                <br>
                   
-               {{ form.paternalism_choice }}
-
-              
-
+              <form method="post">
+                {% csrf_token %}
+                {{ form.paternalism_choice.label_tag }}<br>
+                {{ form.paternalism_choice }}
                 
+                <button type="submit">Submit</button>
+              </form>
               
            </div>
 
                 
                 
+           {% if show_additional_info %}
 
+           <div id="Zusatzinformation" style="display: none;">
+
+               <p>Die kostenpflichtige Zusatzinformation erhalten Sie auf der naechsten Seite.</p>
+
+           </div>
+          
+           {% endif %}
                 
 
 
     </div>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var radios = document.getElementsByName('paternalism_choice');
+          for (var i = 0; i < radios.length; i++) {
+              radios[i].addEventListener('change', function() {
+                  var zusatzInfoDiv = document.getElementById('Zusqtzinformation');
+                  if (this.value === 'Zusatzinfo') {
+                      zusatzInfoDiv.style.display = 'block';
+                  } else {
+                      zusatzInfoDiv.style.display = 'none';
+                  }
+              });
+          }
+      });
+  </script>
+
 
 </html>
 

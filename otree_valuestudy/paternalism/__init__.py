@@ -1,4 +1,5 @@
 from otree.api import *
+import random
 
 
 class C(BaseConstants):
@@ -34,7 +35,6 @@ KNOWLEDGE_CHOICES = [
 
 
 class Player(BasePlayer):
-
 
         frage1r = models.IntegerField(
             label="Der Staat sollte ungesunde Lebensmittel verbieten.",
@@ -110,9 +110,9 @@ class Player(BasePlayer):
                 ['Zusatzinfo', 'Ich entscheide mit Zusatzinformation, welche der beiden Massnahmen ergriffen wird. Die kostenpflichtige Zusatzinformation erhalten Sie auf der naechsten Seite.']
             ],
             widget=widgets.RadioSelectHorizontal,
-
-
         )
+
+        additional_info = models.StringField(blank=True)
 
 
 
@@ -135,6 +135,16 @@ class Paternalism_experiment(Page):
 class Paternalism_experiment2(Page):
     form_model = 'player'
     form_fields = ['paternalism_choice']
+
+    @staticmethod
+    def vars_for_template(player:Player):
+        if not player.additional_info:
+            player.additional_info = random.choice(['A', 'B'])
+        return {
+            'additional_info': player.additional_info
+        }
+
+
 
 
 page_sequence = [ Paternalism_experiment, Paternalism_experiment2, Paternalism_survey, Paternalism_survey2, 
