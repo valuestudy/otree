@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load static %}
+
+{% block title %}
+    Cookie Consent
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h2>Cookie Einstellungen</h2>
+    <p>Um Ihr Nutzungserlebnis zu verbessern, verwendet diese Website Cookies.</p>
+    <label>
+        <input type="radio" name="cookie_choice" value="all-accepted"> Alle Cookies akzeptieren
+    </label>
+    <label>
+        <input type="radio" name="cookie_choice" value="all-declined"> Nicht-essenzielle Cookies ablehnen
+    </label>
+    <label>
+        <input type="radio" name="cookie_choice" value="apply-settings"> Einstellungen anpassen
+    </label>
+
+    <div id="settings">
+        <label>
+            <input type="checkbox" name="analytic_cookies"> Analytische Cookies
+        </label>
+        <label>
+            <input type="checkbox" name="comfort_cookies"> Komfort Cookies
+        </label>
+        <label>
+            <input type="checkbox" name="marketing_cookies"> Marketing Cookies
+        </label>
+    </div>
+
+    <button type="submit">Einstellungen speichern</button>
+</form>
+
+<script>
+    document.querySelector('input[value="apply-settings"]').addEventListener('change', function() {
+        document.getElementById('settings').style.display = 'block';
+    });
+</script>
+{% endblock %}
