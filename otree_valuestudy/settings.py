@@ -9,10 +9,16 @@ SESSION_CONFIGS = [
 dict(
         name='cookiebanner', 
         display_name="The cookiebanner shown to participants",
-        app_sequence=['cookiebanner', 'WTA_abfrage',  'survey', 'paternalism', 'debriefing', ], 
+        app_sequence=['cookiebanner', 'WTA_abfrage',  'survey', 'paternalism', 'debriefing', 'cookiebanner_python' ], 
         num_demo_participants=1
     ),
 
+    dict(
+        name='cookiebanner_python', 
+        display_name="cookie banner but python",
+        app_sequence=['cookiebanner_python'], 
+        num_demo_participants=1
+    ),
     
 
     dict(
@@ -59,6 +65,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 PARTICIPANT_FIELDS = ['cookie_choice',  'banner_design']
 SESSION_FIELDS = []
+
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
