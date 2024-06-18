@@ -9,17 +9,11 @@ SESSION_CONFIGS = [
 dict(
         name='cookiebanner', 
         display_name="The cookiebanner shown to participants",
-        app_sequence=['cookiebanner', 'WTA_abfrage',  'survey', 'paternalism', 'debriefing', 'cookiebanner_python' ], 
+        app_sequence=['cookiebanner', 'WTA_abfrage',  'survey', 'paternalism', 'debriefing'], 
         num_demo_participants=1
     ),
 
-    dict(
-        name='cookiebanner_python', 
-        display_name="cookie banner but python",
-        app_sequence=['cookiebanner_python'], 
-        num_demo_participants=1
-    ),
-    
+ 
 
     dict(
         name='WTA_abfrage', 

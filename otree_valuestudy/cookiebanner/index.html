@@ -46,375 +46,225 @@
   {{ endblock }}
 {{ block content }}
 
-
-
-
 <!-- Modal -->
 <dialog>
-  <div class="cookie-banner" id="cookieBanner">
-    <div id="cookieContent">
-      <h2 id="bannerTitle">Cookie Einstellungen</h2>
-      <!-- Text for design1-3 with the baseline text-->
-      <p class="cookie-text">
-        Um Ihr Nutzungserlebnis zu verbessern, verwendet diese Website Cookies. Dabei werden unterschiedliche Arten von Cookies verwendet, um Ihr Erlebnis auf dieser Website zu verbessern. Dazu gehören solche Cookies, die für den Betrieb dieser Website technisch erforderlich sind. Zudem werden Cookies verwendet, die für statistische Zwecke genutzt werden, Ihren Komfort auf dieser Website erhöhen oder zur Erstellung zielgerichteter Werbeangebote genutzt werden. 
-        Weitere Informationen zu diesen Technologien können Sie unserer <a href="/privacy.html" class="grey-link" target="_blank">Datenschutzrichtlinie</a> entnehmen. 
-        
-      <br>
-      <br>
-      </p>
+    <div class="cookie-banner" id="cookieBanner">
+        <div id="cookieContent">
+            <h2 id="bannerTitle">Cookie Einstellungen</h2>
+            <!-- Text for design1-3 with the baseline text-->
+            <p class="cookie-text">
+                Um Ihr Nutzungserlebnis zu verbessern, verwendet diese Website Cookies. Dabei werden unterschiedliche Arten von Cookies verwendet, um Ihr Erlebnis auf dieser Website zu verbessern. Dazu gehören solche Cookies, die für den Betrieb dieser Website technisch erforderlich sind. Zudem werden Cookies verwendet, die für statistische Zwecke genutzt werden, Ihren Komfort auf dieser Website erhöhen oder zur Erstellung zielgerichteter Werbeangebote genutzt werden.
+                Weitere Informationen zu diesen Technologien können Sie unserer <a href="/privacy.html" class="grey-link" target="_blank">Datenschutzrichtlinie</a> entnehmen.
+                <br><br>
+            </p>
 
-      <!-- Text for design4 which has the reject button within the text  -->
-      <p class="cookie-text design4-cookie-text" style="display: none;">
-        Um Ihr Nutzungserlebnis zu verbessern, verwendet diese Website Cookies. Dabei werden unterschiedliche Arten von Cookies verwendet, um Ihr Erlebnis auf dieser Website zu verbessern. Dazu gehören solche Cookies, die für den Betrieb dieser Website technisch erforderlich sind. Zudem werden Cookies verwendet, die für statistische Zwecke genutzt werden, Ihren Komfort auf dieser Website erhöhen oder zur Erstellung zielgerichteter Werbeangebote genutzt werden. 
-        Sie können in den <a href="javascript:void(0);"  class="grey-link" onclick="showManageCookies()">Einstellungen</a> wählen, welche dieser Cookies verwendet werden sollen. 
-        Die Platzierung nicht essenzieller Cookies können Sie <a href="javascript:void(0);" id="decline-all-cookies-design4" class="grey-link" onclick="declineAllCookies()">ablehnen</a>.<br>
-        
-      <br>
-      </p>
+            <!-- Text for design4 which has the reject button within the text  -->
+            <p class="cookie-text design4-cookie-text" style="display: none;">
+                Um Ihr Nutzungserlebnis zu verbessern, verwendet diese Website Cookies. Dabei werden unterschiedliche Arten von Cookies verwendet, um Ihr Erlebnis auf dieser Website zu verbessern. Dazu gehören solche Cookies, die für den Betrieb dieser Website technisch erforderlich sind. Zudem werden Cookies verwendet, die für statistische Zwecke genutzt werden, Ihren Komfort auf dieser Website erhöhen oder zur Erstellung zielgerichteter Werbeangebote genutzt werden.
+                Sie können in den <a href="javascript:void(0);" class="grey-link" onclick="showManageCookies()">Einstellungen</a> wählen, welche dieser Cookies verwendet werden sollen.
+                Die Platzierung nicht essenzieller Cookies können Sie <a href="javascript:void(0);" id="decline-all-cookies-design4" class="grey-link" onclick="declineAllCookies()">ablehnen</a>.<br>
+                <br>
+            </p>
 
-      <div class="cookie-buttons" id="cookieButtons">
-
-        <button  name = "cookie_choice" value="all-accepted" type="button" id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren</button>
-        <button  name = "cookie_choice" value="all-declined" type="button" id="decline-all-cookies" class="cookie-button decline-button" onclick="declineAllCookies()">Nicht-essenzielle Cookies ablehnen</button>
-        <button type="button" id="custom-button-design2" class="cookie-button" style="display: none;" onclick="showManageCookies()">Einstellungen</button>
-
+            <div class="cookie-buttons" id="cookieButtons">
+                <button name="cookie_choice" value="all-accepted" type="button" id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookies()">Alle Cookies akzeptieren</button>
+                <button name="cookie_choice" value="all-declined" type="button" id="decline-all-cookies" class="cookie-button decline-button" onclick="declineAllCookies()">Nicht-essenzielle Cookies ablehnen</button>
+                <button type="button" id="custom-button-design2" class="cookie-button" style="display: none;" onclick="showManageCookies()">Einstellungen</button>
+            </div>
+            <br>
+            <a href="javascript:void(0);" class="cookie-link" onclick="showManageCookies()">Details und Cookie Einstellungen</a>
         </div>
-        <br>
-       
 
-        <a href="javascript:void(0);" class="cookie-link" onclick="showManageCookies()">Details und Cookie Einstellungen</a>
-      
+        <div id="manageCookiesContent" style="display: none;">
+            <h2 id="manageTitle">Cookie-Einstellungen verwalten</h2>
+            <p class="settings-text">Wählen Sie aus, welchen Arten von Cookies Sie zustimmen: <br><br>
+                <label class="switch">
+                    <input type="checkbox" id="nonNecessarySwitch" checked disabled>
+                    <span class="slider round"></span>
+                </label>
+                <b><label for="nonNecessarySwitch">Funktionale Cookies</label></b><br>
+                Funktionale und technisch erforderliche Cookies helfen uns dabei, diese Webseite für ihre Besucher nutzbar zu machen, indem sie Grundfunktionen wie Seitennavigation oder die Erfassung angegebener Daten ermöglichen. Sie sorgen dafür, dass während Ihres Besuches getätigte Aktionen auf dieser Website korrekt erfasst werden können. Diese Dienste sind standardmäßig aktiviert und können nicht deaktiviert werden.
+                <br><br>
+                <label class="switch">
+                    <input type="checkbox" id="AnalyticSwitch" name="cookie_analytics">
+                    <span class="slider round"></span>
+                </label>
+                <b><label for="AnalyticSwitch">Analytische Cookies</label></b><br>
+                Um unsere Dienstleistungen und diese Website zu verbessern, sammeln wir Daten in anonymisierter Form für statistische Zwecke. Mit Hilfe dieser Cookies ist es uns z.B. möglich, die Frequentierung und den Einfluss bestimmter Bereiche unserer Website zu ermitteln und den Inhalt zu optimieren.
+                <br><br>
+                <label class="switch">
+                    <input type="checkbox" id="ComfortSwitch" name="cookie_comfort">
+                    <span class="slider round"></span>
+                </label>
+                <b><label for="ComfortSwitch">Komfort Cookies</label></b><br>
+                Diese Cookies werden verwendet, um das Nutzungserlebnis auf Ihrer Website zu verbessern. Sie ermöglichen es Ihnen beispielsweise, bei Ihrem nächsten Besuch schnell auf frühere Fortschritte zuzugreifen, und wir verwenden sie, um Ihre Wünsche bei der Nutzung besser zu erfassen.
+                <br><br>
+                <label class="switch">
+                    <input type="checkbox" id="MarketingSwitch" name="cookie_marketing">
+                    <span class="slider round"></span>
+                </label>
+                <b><label for="MarketingSwitch">Marketing Cookies</label></b><br>
+                Diese Cookies werden verwendet, um Besucher auf verschiedenen Websites zu verfolgen. Ziel ist es, Anzeigen zu schalten, die für den einzelnen Nutzer relevant und ansprechend sind und damit für Verlage und dritte Werbetreibende wertvoller sind.
+            </p>
+
+            <br>
+            <p class="cookie-setting design1-cookie-setting" style="display: none; text-align: center;">
+                <button type="button" name="cookie_choice" value="all-accepted-settings" id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookiesSettings()">Alle Cookies akzeptieren</button>
+                <button type="button" name="cookie_choice" value="apply-settings" id="zurueckButton" class="cookie-button" onclick="applyCookieSettings()">Einstellungen anwenden</button>
+            </p>
+        </div>
     </div>
+</dialog>
 
-    <div id="manageCookiesContent" style="display: none;">
-      <h2 id="manageTitle">Cookie-Einstellungen verwalten</h2> 
-      <p class="settings-text">Wählen Sie aus, welchen Arten von Cookies Sie zustimmen: <br> <br>
-      <label class="switch">
-        <input type="checkbox" id="nonNecessarySwitch" checked disabled>
-        <span class="slider round"></span>
-      </label>
-      
-      <b><label for="nonNecessarySwitch">Funktionale Cookies</label></b><br>
-      Funktionale und technisch erforderliche Cookies helfen uns dabei, diese Webseite für ihre Besucher nutzbar zu machen, indem sie Grundfunktionen wie Seitennavigation oder die Erfassung angegebener Daten ermöglichen. Sie sorgen dafür, dass während Ihres Besuches getätigte Aktionen auf dieser Website korrekt erfasst werden können. 
-        Diese Dienste sind standardmäßig aktiviert und können nicht deaktiviert werden. 
-      
-      <br> <br>
-      <label class="switch">
-        <input type="checkbox" id="AnalyticSwitch"  name="cookie_analytics" >
-        <span class="slider round"></span>
-      </label>
-      <b><label for="AnalyticSwitch">Analytische Cookies</label></b><br>
+<script>
+    const dialogElement = document.querySelector("dialog");
+    dialogElement.showModal();
 
-      Um unsere Dienstleistungen und diese Website zu verbessern, sammeln wir Daten in anonymisierter Form für statistische Zwecke. Mit Hilfe dieser Cookies ist es uns z.B. möglich, die Frequentierung und den Einfluss bestimmter Bereiche unserer Website zu ermitteln und den Inhalt zu optimieren.
-
-        <br> <br>
-        
-        <label class="switch">
-          <input type="checkbox" id="ComfortSwitch" name="cookie_comfort">
-          <span class="slider round"></span>
-        </label>
-        <b><label for="ComfortSwitch">Komfort Cookies</label></b><br>
-  
-        Diese Cookies werden verwendet, um das Nutzungserlebnis auf Ihrer Website zu verbessern. Sie ermöglichen es Ihnen beispielsweise, bei Ihrem nächsten Besuch schnell auf frühere Fortschritte zuzugreifen, und wir verwenden sie, um Ihre Wünsche bei der Nutzung besser zu erfassen.
-  
-          <br> <br>
-        <label class="switch">
-          <input type="checkbox" id="MarketingSwitch" name="cookie_marketing">
-          <span class="slider round"></span>
-        </label>
-        <b><label for="MarketingSwitch">Marketing Cookies</label></b><br>
-  
-        Diese Cookies werden verwendet, um Besucher auf verschiedenen Websites zu verfolgen. Ziel ist es, Anzeigen zu schalten, die für den einzelnen Nutzer relevant und ansprechend sind und damit für Verlage und dritte Werbetreibende wertvoller sind.
-
-      </p>
-
-
-
-
-      <br><!-- Button design 2-4 which has 'Back' button -->
-      
-      <!-- Button design1 which has the green accept all button -->
-      <p class="cookie-setting design1-cookie-setting" style="display: none; text-align: center;">
-        <button type="button"  name = "cookie_choice" value="all-accepted-settings" id="accept-all-cookies" class="cookie-button accept-button" onclick="acceptAllCookiesSettings()">Alle Cookies akzeptieren</button>
-        <button type="button"  name = "cookie_choice" value="apply-settings" id="zurueckButton" class="cookie-button" onclick="applyCookieSettings()">Einstellungen anwenden</button>
-      </p> 
-      </div>
-      </div>
-      </dialog>
-      
-
-      <script>
-      const dialogElement = document.querySelector("dialog");
-      
-      dialogElement.showModal();
-      
-      function acceptAllCookies() {
+    function acceptAllCookies() {
         console.log("All cookies accepted");
         liveSend('all-accepted');
         dialogElement.close();
-      }
+    }
 
-      function acceptAllCookiesSettings() {
+    function acceptAllCookiesSettings() {
         console.log("All cookies accepted");
         liveSend('all-accepted-settings');
         dialogElement.close();
-      }
-      
-      function declineAllCookies() {
+    }
+
+    function declineAllCookies() {
         console.log("All cookies declined");
         liveSend('all-declined');
         dialogElement.close();
-      }
-      
-      function showManageCookies() {
+    }
+
+    function showManageCookies() {
         document.getElementById("cookieContent").style.display = "none";
         document.getElementById("manageCookiesContent").style.display = "block";
-      }
-      
-      function applyCookieSettings() {
+    }
+
+    function applyCookieSettings() {
         const analyticSwitch = document.getElementById("AnalyticSwitch");
         const comfortSwitch = document.getElementById("ComfortSwitch");
         const marketingSwitch = document.getElementById("MarketingSwitch");
 
         liveSend('apply-settings');
-      
+
         if (analyticSwitch.checked) {
-          console.log("Analytic cookies enabled");
+            console.log("Analytic cookies enabled");
         } else {
-          console.log("Analytic cookies disabled");
+            console.log("Analytic cookies disabled");
         }
-      
+
         if (comfortSwitch.checked) {
-          console.log("Comfort cookies enabled");
+            console.log("Comfort cookies enabled");
         } else {
-          console.log("Comfort cookies disabled");
+            console.log("Comfort cookies disabled");
         }
-      
+
         if (marketingSwitch.checked) {
-          console.log("Marketing cookies enabled");
+            console.log("Marketing cookies enabled");
         } else {
-          console.log("Marketing cookies disabled");
+            console.log("Marketing cookies disabled");
         }
-      
-        // Display content and hide manage cookies section
+
         document.getElementById("cookieContent").style.display = "block";
         document.getElementById("manageCookiesContent").style.display = "none";
-      
+
         dialogElement.close();
-      }
-      
-      // For the Zurück button on the second layer
-      function showCookieContent() {
+    }
+
+    function showCookieContent() {
         document.getElementById("cookieContent").style.display = "block";
         document.getElementById("manageCookiesContent").style.display = "none";
-      }
+    }
 
-      function designbanner1() {
-        console.log("design1");
-        liveSend('design1');
-      }
+    document.getElementById("zurueckButton").addEventListener("click", showCookieContent);
 
-      function designbanner2() {
-        console.log("design2");
-        liveSend('design2');
-      }
-      
-
-      function designbanner3() {
-        console.log("design3");
-        liveSend('design3');
-      }
-      
-
-      function designbanner4() {
-        console.log("design4");
-        liveSend('design4');
-      }
-      
-      
-      document.getElementById("zurueckButton").addEventListener("click", showCookieContent);
-
-      
-      function setRandomDesign() {
-        const designs = ["design1", "design2", "design3", "design4"];
-        const randomDesign = designs[Math.floor(Math.random() * designs.length)];
+    document.addEventListener("DOMContentLoaded", function () {
+        const randomDesign = "{{ random_design }}";
         const cookieBanner = document.getElementById("cookieBanner");
+        const designs = ["design1", "design2", "design3", "design4"];
 
-       
-      
-        // Remove all design classes
         cookieBanner.classList.remove(...designs);
-      
-        // Add class for the randomly selected design
         cookieBanner.classList.add(randomDesign);
-      
-        // Hide all cookie text elements
+
         const cookieTexts = document.querySelectorAll(".cookie-text");
         cookieTexts.forEach(text => text.style.display = "none");
-      
-        // Hide all cookie setting elements
+
         const cookieSettings = document.querySelectorAll(".cookie-setting");
         cookieSettings.forEach(setting => setting.style.display = "none");
-      
-        // Show text element for design4 if selected
+
         if (randomDesign === "design4") {
-          
-
-          const design4Text = document.querySelector(".design4-cookie-text");
-          design4Text.style.display = "block";
-          // Hide the .cookie-text for design4
-          const baselineText = document.querySelector(".cookie-text");
-          baselineText.style.display = "none";
-          // Hide the decline-all-cookies button for design4
-          document.getElementById("decline-all-cookies").style.display = "none";
-          
-  
-          document.addEventListener("DOMContentLoaded", (event) => {
-                liveSend('design4');
-              });
-
-
-        } else {
-          // Show the .cookie-text for designs 1-3
-          const baselineText = document.querySelector(".cookie-text");
-          baselineText.style.display = "block";
-
-          // Show/hide the decline-all-cookies button for designs 1-3
-          if (randomDesign === "design2") {
+            document.querySelector(".design4-cookie-text").style.display = "block";
+            document.querySelector(".cookie-text").style.display = "none";
             document.getElementById("decline-all-cookies").style.display = "none";
-          } else {
-            document.getElementById("decline-all-cookies").style.display = "inline-block";
-          }
-        }
-      
-        // Show/hide the cookie settings section based on the selected design
-        if (randomDesign === "design1") {
-          document.addEventListener("DOMContentLoaded", (event) => {
-                liveSend('design1');
-              });
-
-          document.querySelector(".design1-cookie-setting").style.display = "block";
+            liveSend('design4');
         } else {
-          document.querySelector(".design1-cookie-setting").style.display = "none";
+            document.querySelector(".cookie-text").style.display = "block";
+            if (randomDesign === "design2") {
+                document.getElementById("decline-all-cookies").style.display = "none";
+            } else {
+                document.getElementById("decline-all-cookies").style.display = "inline-block";
+            }
         }
-      
-        // Show the cookie-setting section for designs 2-4
-        if (randomDesign !== "design1") {
-          
-          document.querySelector(".cookie-setting").style.display = "block";
+
+        if (randomDesign === "design1") {
+            document.querySelector(".design1-cookie-setting").style.display = "block";
+            liveSend('design1');
+        } else {
+            document.querySelector(".design1-cookie-setting").style.display = "none";
+            document.querySelector(".cookie-setting").style.display = "block";
         }
 
         if (randomDesign === "design2" || randomDesign === "design4") {
-          const cookieLinks = document.querySelectorAll(".cookie-link");
-          cookieLinks.forEach(link => link.style.display = "none");
+            const cookieLinks = document.querySelectorAll(".cookie-link");
+            cookieLinks.forEach(link => link.style.display = "none");
         }
-        
-        if (randomDesign === "design2") {
-          document.addEventListener("DOMContentLoaded", (event) => {
-                liveSend('design2');
-              });
-              document.getElementById("custom-button-design2").style.display = "block";
-            } else {
-              document.getElementById("custom-button-design2").style.display = "none";
-            }
 
+        if (randomDesign === "design2") {
+            document.getElementById("custom-button-design2").style.display = "block";
+            liveSend('design2');
+        } else {
+            document.getElementById("custom-button-design2").style.display = "none";
+        }
 
         if (randomDesign === "design3") {
-          document.addEventListener("DOMContentLoaded", (event) => {
-                liveSend('design3');
-              });  // Call designbanner3() function for Design 3
+            liveSend('design3');
         }
-          
-      }
-      
-      // Call the function to set a random design of the cookie banner
-      setRandomDesign();
-      </script>
-      
-
-<!--End Cookie Banner-->
-    <!-------------------------------------------------------------------------------------------->
-
-
-
-
-  <div class="menu-container"></div>
-  <div class="content-container">
-    <!-------------------------------------------------------------------------------------------->
-    <!--Start Header-->
-    <div class="banner" style="background: url('{% static 'img/example-scene.svg' %}') no-repeat center; background-size: contain; height: 300px;"></div>
-    
-    
-    <div class="banner" style="color: black;  background-color: rgb(255, 225, 0); max-width: 900px; margin: 0 auto;">
-
-      <div class="banner-table flex-column" style="background-color: rgb(255, 225, 0);">
-        <div class="flex-row" >
-          <div class="flex-item flex-column" style="background-color: rgb(255, 225, 0);">
-          <h2 style="margin-top: 20px;" class="add-top-margin-small">Herzlich Willkommen zu unserer Studie!</h2>
-          <br>
-          <p class="text" style="margin-top: 40px;">
-            
-            Vielen Dank, dass Sie sich heute die Zeit genommen haben an unserer Studie teilzunehmen. <br>
-            Mit dieser Studie wollen wir einen Einblick in die Präferenzen und das Verhalten und von Menschen in digitalen Entscheidungskontexten erhalten. Die Studie besteht aus einem Fragebogen und zwei experimentellen Teilen. Innerhalb des Fragebogens stellen wir Ihnen einige Fragen zu Ihrer Person sowie zu Ihrem Verhalten, Ihren Vorlieben, Ihren Kenntnissen und Ihren Meinungen im Umgang mit digitalen Medien, insbesondere dem Internet. <br>
-            Für die Beendigung der Studie erhalten Sie mindestens einen Betrag von […] EUR. Zudem können Sie in den beiden experimentellen Teilen zusätzliches Geld verdienen, sodass insgesamt eine Auszahlung von bis zu […] EUR möglich ist. In den experimentellen Teilen hängt Ihre zusätzliche Auszahlung von Ihren Entscheidungen ab. Wie genau sich diese auf Ihre Auszahlung auswirken, erklären wir Ihnen jeweils unmittelbar vor den experimentellen Teilen. Die für Ihre Auszahlung relevanten Informationen fragen wir am Ende der Studie ab.  Die Teilnahme wird voraussichtlich [15-20] Minuten dauern. 
-            <br><br>Die Teilnahme an dieser Studie ist nur möglich, <b>wenn Sie über einen Google Account / eine G-Mail Adresse </b>verfügen. <br>
-            <br>Die Teilnahme an dieser Studie ist freiwillig. Sie haben jederzeit das Recht, Ihre Teilnahme zu beenden. Ein vorzeitiger Abbruch hat für Sie keine negativen Konsequenzen, abgesehen von dem Verzicht auf die Vergütung für die Teilnahme. 
-            Sofern Sie sich für eine Teilnahme entscheiden, erheben wir während dieser Studie forschungsrelevante und demografische Daten. Diese Daten sind anonym und bieten für sich genommen keine Möglichkeit, einzelne Daten mit einzelnen Teilnehmenden in Verbindung zu bringen.<br> Sofern Daten erhoben werden, die einen Rückschluss auf Ihre Person zulassen, werden diese getrennt von Ihren innerhalb der Studie abgegebenen Antworten aufbewahrt, und im Anschluss gelöscht, sodass eine Identifikation nicht möglich ist. Bitte beachten Sie dazu auch unsere [Datenschutzbestimmungen].
-            Die erhobenen Forschungsdaten werden anschließend in aggregierter Form durch das Projekt-Team des Max-Planck-Instituts zur Erforschung von Gemeinschaftsgütern und der Erasmus Universität Rotterdam ausgewertet und für die Mindestdauer von zehn Jahren aufbewahrt. Anonymisierte Daten können ohne zeitliche Begrenzung aufbewahrt und in wissenschaftlichen Zeitschriften und Repositorien zum Zwecke der Veröffentlichung von Forschungsanalysen gespeichert werden. Die gewonnenen Erkenntnisse werden für die Erstellung von wissenschaftlichen Arbeiten und Präsentationen genutzt. Diese Arbeiten werden veröffentlicht. Um die Transparenz in der Wissenschaft zu gewährleisten, können Daten, die keine Rückschlüsse auf einzelne Personen zulassen, zur Nachnutzung an Dritte weitergegeben werden. Zweck, Art und Umfang dieser Nachnutzung sind zum jetzigen Zeitpunkt nicht absehbar.
-            Falls Sie Rückfragen zu dieser Studie haben, melden Sie sich bitte per E-Mail an […]. Wir werden versuchen, Ihre Fragen so schnell es geht zu beantworten. 
-            <br>
-            <br>
-            <input type="checkbox" id="consent-checkbox" name="consent"> Ich akzeptiere die Teilnahme und Datenschutzbestimmungen und bin mit der beschriebenen Datenverarbeitung einverstanden.
-            
-                  {{ formfield_errors 'consent' }} 
-          <br>
-            </p>
-          
-          
-            
-            
-         
-        
-      <button style="margin-top: 20px;" class="small-button">Studie beginnen</button>
-        <p class="text" style="margin-top: 20px; margin-bottom: 20px;"> 
-
-          <i>Wenn Sie nicht an der Studie teilnehmen möchten, können Sie die Webseite jetzt verlassen. Es werden keine personenbezogenen Daten von Ihnen gespeichert.</i>
-
-          
-        </p>
-      </div> </div>
-      </div>
-    </div>
-  </div>
-
-
-  <script>
-
-
-
-    document.addEventListener("DOMContentLoaded", function() {
-        var button = document.getElementById("accept-all-cookies");
-        var buttonClickedInput = document.getElementById("buttonClicked");
-        
-        button.addEventListener("change", function() {
-            buttonClickedInput.value = button.checked ? "true" : "false";
-        });
     });
-    </script>
+</script>
 
-    <!--End Header-->
-    <!-------------------------------------------------------------------------------------------->
-
-
-
-      </div>
+<div class="menu-container"></div>
+<div class="content-container">
+    <div class="banner" style="background: url('{% static 'img/example-scene.svg' %}') no-repeat center; background-size: contain; height: 300px;"></div>
+    <div class="banner" style="color: black; background-color: rgb(255, 225, 0); max-width: 900px; margin: 0 auto;">
+        <div class="banner-table flex-column" style="background-color: rgb(255, 225, 0);">
+            <div class="flex-row">
+                <div class="flex-item flex-column" style="background-color: rgb(255, 225, 0);">
+                    <h2 style="margin-top: 20px;" class="add-top-margin-small">Herzlich Willkommen zu unserer Studie!</h2>
+                    <br>
+                    <p class="text" style="margin-top: 40px;">
+                        Vielen Dank, dass Sie sich heute die Zeit genommen haben an unserer Studie teilzunehmen. <br>
+                        Mit dieser Studie wollen wir einen Einblick in die Präferenzen und das Verhalten und von Menschen in digitalen Entscheidungskontexten erhalten. Die Studie besteht aus einem Fragebogen und zwei experimentellen Teilen. Innerhalb des Fragebogens stellen wir Ihnen einige Fragen zu Ihrer Person sowie zu Ihrem Verhalten, Ihren Vorlieben, Ihren Kenntnissen und Ihren Meinungen im Umgang mit digitalen Medien, insbesondere dem Internet. <br>
+                        Für die Beendigung der Studie erhalten Sie mindestens einen Betrag von […] EUR. Zudem können Sie in den beiden experimentellen Teilen zusätzliches Geld verdienen, sodass insgesamt eine Auszahlung von bis zu […] EUR möglich ist. In den experimentellen Teilen hängt Ihre zusätzliche Auszahlung von Ihren Entscheidungen ab. Wie genau sich diese auf Ihre Auszahlung auswirken, erklären wir Ihnen jeweils unmittelbar vor den experimentellen Teilen. Die für Ihre Auszahlung relevanten Informationen fragen wir am Ende der Studie ab. Die Teilnahme wird voraussichtlich [15-20] Minuten dauern.
+                        <br><br>Die Teilnahme an dieser Studie ist nur möglich, <b>wenn Sie über einen Google Account / eine G-Mail Adresse </b>verfügen. <br>
+                        <br>Die Teilnahme an dieser Studie ist freiwillig. Sie haben jederzeit das Recht, Ihre Teilnahme zu beenden. Ein vorzeitiger Abbruch hat für Sie keine negativen Konsequenzen, abgesehen von dem Verzicht auf die Vergütung für die Teilnahme. Sofern Sie sich für eine Teilnahme entscheiden, erheben wir während dieser Studie forschungsrelevante und demografische Daten. Diese Daten sind anonym und bieten für sich genommen keine Möglichkeit, einzelne Daten mit einzelnen Teilnehmenden in Verbindung zu bringen.<br> Sofern Daten erhoben werden, die einen Rückschluss auf Ihre Person zulassen, werden diese getrennt von Ihren innerhalb der Studie abgegebenen Antworten aufbewahrt, und im Anschluss gelöscht, sodass eine Identifikation nicht möglich ist. Bitte beachten Sie dazu auch unsere [Datenschutzbestimmungen].
+                        Die erhobenen Forschungsdaten werden anschließend in aggregierter Form durch das Projekt-Team des Max-Planck-Instituts zur Erforschung von Gemeinschaftsgütern und der Erasmus Universität Rotterdam ausgewertet und für die Mindestdauer von zehn Jahren aufbewahrt. Anonymisierte Daten können ohne zeitliche Begrenzung aufbewahrt und in wissenschaftlichen Zeitschriften und Repositorien zum Zwecke der Veröffentlichung von Forschungsanalysen gespeichert werden. Die gewonnenen Erkenntnisse werden für die Erstellung von wissenschaftlichen Arbeiten und Präsentationen genutzt. Diese Arbeiten werden veröffentlicht. Um die Transparenz in der Wissenschaft zu gewährleisten, können Daten, die keine Rückschlüsse auf einzelne Personen zulassen, zur Nachnutzung an Dritte weitergegeben werden. Zweck, Art und Umfang dieser Nachnutzung sind zum jetzigen Zeitpunkt nicht absehbar.
+                        Falls Sie Rückfragen zu dieser Studie haben, melden Sie sich bitte per E-Mail an […]. Wir werden versuchen, Ihre Fragen so schnell es geht zu beantworten.
+                        <br><br>
+                        <input type="checkbox" id="consent-checkbox" name="consent"> Ich akzeptiere die Teilnahme und Datenschutzbestimmungen und bin mit der beschriebenen Datenverarbeitung einverstanden.
+                        {{ formfield_errors 'consent' }}
+                        <br>
+                    </p>
+                    <button style="margin-top: 20px;" class="small-button">Studie beginnen</button>
+                    <p class="text" style="margin-top: 20px; margin-bottom: 20px;">
+                        <i>Wenn Sie nicht an der Studie teilnehmen möchten, können Sie die Webseite jetzt verlassen. Es werden keine personenbezogenen Daten von Ihnen gespeichert.</i>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</body>
-
-
-
-
-
+</div>
 
 {{ endblock }}

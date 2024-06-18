@@ -1,5 +1,5 @@
 from otree.api import *
-
+import random
 
 doc = """
 Your app description
@@ -128,7 +128,13 @@ class Index(Page):
     form_model = 'player'
     form_fields = [ 'consent', 'banner_design', 'cookie_choice', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
 
-
+    def vars_for_template(self):
+        if 'random_design' not in self.session.vars:
+            designs = ["design1", "design2", "design3", "design4"]
+            self.session.vars['random_design'] = random.choice(designs)
+        return {
+            'random_design': self.session.vars['random_design']
+        }
     
     @staticmethod
     def live_method(player: Player, data):
