@@ -126,7 +126,7 @@ class Player(BasePlayer):
 class Index(Page):
 
     form_model = 'player'
-    form_fields = [ 'consent', 'banner_design', 'cookie_choice', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
+    form_fields = [ 'banner_design', 'cookie_choice', 'cookie_analytics', 'cookie_comfort', 'cookie_marketing' ]
 
     def vars_for_template(self):
         if 'random_design' not in self.session.vars:
@@ -149,10 +149,15 @@ class Index(Page):
         participant.banner_design = player.banner_design
         participant.cookie_choice = player.cookie_choice
 
+class Zustimmung(Page):
+    form_model = 'player'
+    form_fields = ['consent']
+
+
 class Demographics(Page):
     form_model = 'player'
     form_fields = ['education', 'age', 'gender']
 
 
 
-page_sequence = [Index, Demographics]
+page_sequence = [Index, Zustimmung, Demographics]

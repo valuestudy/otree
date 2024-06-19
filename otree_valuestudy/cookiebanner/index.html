@@ -2,7 +2,7 @@
 
 
     <div class="menu" style="background-color:#ffffff;">
-    <div class="menu-table flex-row-space-between" style="border-bottom: 1px solid black; ">
+    <div class="menu-table flex-row-space-between" style="border-bottom: 0px solid black; ">
       <div class="logo flex-row-center">
         <img src="{% static 'img/favicon.ico' %}" style="margin-right: 20px; 
         max-width:50px;
@@ -14,8 +14,8 @@
         <img src="{% static 'img/menu.png' %}">
       </a>
       <div class="menu-items flex-row-center flex-item">
-        <a class="menu-embedding" href="">Overview</a>
-        <a class="menu-widget" href="">About us</a>
+        <a class="menu-embedding" target="_blank" href="{% static 'html/privacy.html' %}">Overview</a>
+        <a class="menu-widget" target="_blank" href="{% static 'html/privacy.html' %}">About us</a>
         <a class="menu-embedding" target="_blank" href="{% static 'html/privacy.html' %}">Privacy</a>
 
  
@@ -237,34 +237,39 @@
 
 <div class="menu-container"></div>
 <div class="content-container">
-    <div class="banner" style="background: url('{% static 'img/example-scene.svg' %}') no-repeat center; background-size: contain; height: 300px;"></div>
-    <div class="banner" style="color: black; background-color: rgb(255, 225, 0); max-width: 900px; margin: 0 auto;">
-        <div class="banner-table flex-column" style="background-color: rgb(255, 225, 0);">
+      <div class="banner" style="color: black; background-color: rgb(255, 255, 255);  margin: 0 auto;">
+        <div class="banner-table flex-column" style="background-color: rgb(255, 255, 255);">
             <div class="flex-row">
-                <div class="flex-item flex-column" style="background-color: rgb(255, 225, 0);">
-                    <h2 style="margin-top: 20px;" class="add-top-margin-small">Herzlich Willkommen zu unserer Studie!</h2>
-                    <br>
-                    <p class="text" style="margin-top: 40px;">
-                        Vielen Dank, dass Sie sich heute die Zeit genommen haben an unserer Studie teilzunehmen. <br>
-                        Mit dieser Studie wollen wir einen Einblick in die Präferenzen und das Verhalten und von Menschen in digitalen Entscheidungskontexten erhalten. Die Studie besteht aus einem Fragebogen und zwei experimentellen Teilen. Innerhalb des Fragebogens stellen wir Ihnen einige Fragen zu Ihrer Person sowie zu Ihrem Verhalten, Ihren Vorlieben, Ihren Kenntnissen und Ihren Meinungen im Umgang mit digitalen Medien, insbesondere dem Internet. <br>
-                        Für die Beendigung der Studie erhalten Sie mindestens einen Betrag von […] EUR. Zudem können Sie in den beiden experimentellen Teilen zusätzliches Geld verdienen, sodass insgesamt eine Auszahlung von bis zu […] EUR möglich ist. In den experimentellen Teilen hängt Ihre zusätzliche Auszahlung von Ihren Entscheidungen ab. Wie genau sich diese auf Ihre Auszahlung auswirken, erklären wir Ihnen jeweils unmittelbar vor den experimentellen Teilen. Die für Ihre Auszahlung relevanten Informationen fragen wir am Ende der Studie ab. Die Teilnahme wird voraussichtlich [15-20] Minuten dauern.
-                        <br><br>Die Teilnahme an dieser Studie ist nur möglich, <b>wenn Sie über einen Google Account / eine G-Mail Adresse </b>verfügen. <br>
-                        <br>Die Teilnahme an dieser Studie ist freiwillig. Sie haben jederzeit das Recht, Ihre Teilnahme zu beenden. Ein vorzeitiger Abbruch hat für Sie keine negativen Konsequenzen, abgesehen von dem Verzicht auf die Vergütung für die Teilnahme. Sofern Sie sich für eine Teilnahme entscheiden, erheben wir während dieser Studie forschungsrelevante und demografische Daten. Diese Daten sind anonym und bieten für sich genommen keine Möglichkeit, einzelne Daten mit einzelnen Teilnehmenden in Verbindung zu bringen.<br> Sofern Daten erhoben werden, die einen Rückschluss auf Ihre Person zulassen, werden diese getrennt von Ihren innerhalb der Studie abgegebenen Antworten aufbewahrt, und im Anschluss gelöscht, sodass eine Identifikation nicht möglich ist. Bitte beachten Sie dazu auch unsere [Datenschutzbestimmungen].
-                        Die erhobenen Forschungsdaten werden anschließend in aggregierter Form durch das Projekt-Team des Max-Planck-Instituts zur Erforschung von Gemeinschaftsgütern und der Erasmus Universität Rotterdam ausgewertet und für die Mindestdauer von zehn Jahren aufbewahrt. Anonymisierte Daten können ohne zeitliche Begrenzung aufbewahrt und in wissenschaftlichen Zeitschriften und Repositorien zum Zwecke der Veröffentlichung von Forschungsanalysen gespeichert werden. Die gewonnenen Erkenntnisse werden für die Erstellung von wissenschaftlichen Arbeiten und Präsentationen genutzt. Diese Arbeiten werden veröffentlicht. Um die Transparenz in der Wissenschaft zu gewährleisten, können Daten, die keine Rückschlüsse auf einzelne Personen zulassen, zur Nachnutzung an Dritte weitergegeben werden. Zweck, Art und Umfang dieser Nachnutzung sind zum jetzigen Zeitpunkt nicht absehbar.
-                        Falls Sie Rückfragen zu dieser Studie haben, melden Sie sich bitte per E-Mail an […]. Wir werden versuchen, Ihre Fragen so schnell es geht zu beantworten.
-                        <br><br>
-                        <input type="checkbox" id="consent-checkbox" name="consent"> Ich akzeptiere die Teilnahme und Datenschutzbestimmungen und bin mit der beschriebenen Datenverarbeitung einverstanden.
-                        {{ formfield_errors 'consent' }}
-                        <br>
-                    </p>
-                    <button style="margin-top: 20px;" class="small-button">Studie beginnen</button>
-                    <p class="text" style="margin-top: 20px; margin-bottom: 20px;">
-                        <i>Wenn Sie nicht an der Studie teilnehmen möchten, können Sie die Webseite jetzt verlassen. Es werden keine personenbezogenen Daten von Ihnen gespeichert.</i>
-                    </p>
-                </div>
-            </div>
+                <div class="flex-item flex-column" style="background-color: rgb(255, 255, 255);">
+                    <table style="border-collapse: collapse; width: 100%;">
+                        <tr style="border: none;">
+                            <td style="border: none; vertical-align: top;">
+                                <h1>Herzlich Willkommen zu unserer Studie!</h1>
+                                <p style="font-size: 18px; 
+                                font-family: 'Lato', sans-serif;">Vielen Dank, dass Sie sich heute die Zeit genommen haben an unserer Studie teilzunehmen. 
+                                
+                                <br> <br>
+                                    Mit dieser Studie wollen wir einen Einblick in die Präferenzen und das Verhalten und von Menschen in digitalen Entscheidungskontexten erhalten.
+                                    
+                                
+                                </p>
+                                    
+                                 <div style="text-align: center;">   <button style="margin-top: 10px;" class="small-button">Weiter</button> </div>
+              
+                                
+                            </td>
+                            <td style="border: none; vertical-align: top;">
+                                <img src="{% static 'img/title_pic.jpg' %}" alt="Title Picture" style="max-width: 450px; height: auto;">
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    
         </div>
     </div>
+
+    
 </div>
 
 {{ endblock }}

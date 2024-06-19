@@ -49,19 +49,19 @@ video {
 h1 {
   font-size: 30px;
   color: #333333;
-  margin: 30px 0 0 0;
-  padding: 0;
+  margin: 20px 0 20px 0;
+  padding: 0px;
   font-weight: bold;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 h2 {
   font-size: 24px;
   color: #333333;
-  margin: 30px 0 0 0;
+  margin: 20px 0 20px 0;
   padding: 0;
   font-weight: bold;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 h3 {
@@ -117,8 +117,10 @@ hr {
   margin: 0;
 }
 
+
+
 .menu .menu-highlight {
-  color: rgb(255, 255, 255) !important;
+  color: rgb(79, 42, 42) !important;
   opacity: 1 !important;
   font-weight: 700 !important;
 }
@@ -327,9 +329,9 @@ hr {
 }
 
 .banner .flex-item {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 30px;
+  
+  margin: 10px auto;
+  padding: 0px;
 }
 
 .flex-column {
@@ -972,7 +974,9 @@ ol.nested>li:before {
   background-color: #efefef;
 }
 
-.custom-table td,
+.custom-table td {
+  padding: 20px;
+}
 .custom-table th {
   padding: 5px 10px;
 }
