@@ -1,5 +1,5 @@
 from otree.api import *
-
+import random
 
 doc = """
 Your app description
@@ -46,6 +46,8 @@ class Player(BasePlayer):
         min=2,
         blank=True
     )
+
+    assigned_price = models.FloatField(initial=0)
     # Your other page code...
 
 
@@ -65,12 +67,20 @@ class WTA_abfrage2(Page):
 
     form_model = 'player'
     form_fields = ['WTA', 'desired_amount']
+
     @staticmethod
     def js_vars(player: Player):
         return dict(endowment=C.ENDOWMENT)
 
+    @staticmethod
+    def vars_for_template(self):
+        if 'assigned_price' not in self.session.vars:
+            self.session.vars['assigned_price'] = random.uniform(0, 2)
+        return {
+            'assigned_price': self.session.vars['assigned_price']
+        }
 
-
+    
 
    
 

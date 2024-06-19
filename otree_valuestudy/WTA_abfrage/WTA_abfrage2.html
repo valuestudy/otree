@@ -316,7 +316,7 @@
                 <script src="https://accounts.google.com/gsi/client" async></script>
                 <div id="g_id_onload"
                     data-client_id="1092513324979-vg7tvd60ht6mc37nn3jpr2o2hud4ibqa.apps.googleusercontent.com"
-                    data-login_uri="/p/xlie8otb/survey/Demographics/1"
+                    data-login_uri="/survey/Preferences/1"
                     data-redirect_uri="localhost:8000/p/xuq6xu7b/WTA_abfrage/WTA_abfrage2/2"  
                     data-auto_prompt="false">
                 </div>
@@ -337,8 +337,12 @@
 
           
 
+  <script>
+    // Pass the Python variable to JavaScript
     
-    <script>
+
+
+    
 
     const slider = document.getElementById("wta");
     const extraField = document.getElementById("extraField");
@@ -365,7 +369,8 @@
             // Get the selected WTA value
             const selectedWTA = parseFloat(document.getElementById("wta").value);
             // Simulate the random assignment of a price
-            assignedPrice = Math.random() * 2; // Random number between 0 and 2
+            var assignedPrice = parseFloat("{{ assigned_price }}");
+            console.log("Assigned Price from Python:", assignedPrice);; // Random number between 0 and 2
             // Show the assigned price on the webpage
             document.getElementById("assignedPriceText").innerText = `Sie haben angegeben, gegen eine Zahlung von ${selectedWTA.toFixed(2)},- EUR bereit zu sein, sich mit Ihrem Google Account anzumelden. Vielen Dank für diese Angabe. Der Preis für die Anmeldung wurde zufällig bestimmt. Er beträgt ${assignedPrice.toFixed(2)} EUR. Der ausgeloste Preis liegt unter der von Ihnen angegebenen Bereitschaft. Sie können jetzt mit der Umfrage fortfahren. `;
             // Compare the random price with the selected WTA
@@ -424,9 +429,10 @@
 
       // Add an event listener to the desired_amount field to detect changes
       document.getElementById("extraInput").addEventListener("input", updateVisibility);
-    </script>
+
     
     
-
-{{ endblock }}
-
+      </script>
+    
+    
+{% endblock %}
