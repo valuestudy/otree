@@ -46,6 +46,12 @@ dict(
         num_demo_participants=1
     ),
 
+    dict(
+    name = 'bret',
+    display_name = "Bomb Risk Elicitation Task",
+    num_demo_participants = 1,
+    app_sequence = ['bret'],
+    ),
      
 ]
 
