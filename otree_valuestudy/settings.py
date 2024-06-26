@@ -52,7 +52,14 @@ dict(
     num_demo_participants = 1,
     app_sequence = ['bret'],
     ),
-     
+
+    dict(
+    name = 'mpl',
+    display_name = "Multiple Price List",
+    num_demo_participants = 1,
+    app_sequence = ['mpl'],
+    ),
+
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
